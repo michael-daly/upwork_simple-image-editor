@@ -41,6 +41,23 @@ class App extends Component
 			canvasWidth:  content.offsetWidth,
 			canvasHeight: content.offsetHeight,
 		});
+
+		/*
+			We add listen events to the document instead of the App component so users can move
+			their mouse outside the canvas's boundaries and have it still work. 
+		*/
+
+		this.boundMouseMove = this.onMouseMove.bind (this);
+		this.boundMouseUp   = this.onMouseUp.bind (this);
+
+		document.addEventListener ('mousemove', this.boundMouseMove);
+		document.addEventListener ('mouseup',   this.boundMouseUp);
+	}
+
+	componentWillUnmount ()
+	{
+		document.removeEventListener ('mousemove', this.boundMouseMove);
+		document.removeEventListener ('mouseup',   this.boundMouseUp);
 	}
 
 	onMouseMove ( event )
@@ -49,21 +66,21 @@ class App extends Component
 		{
 			const { state } = this;
 
-			const endX = clamp (event.clientX - state.canvasX, 0, state.canvasWidth);
-			const endY = clamp (event.clientY - state.canvasY, 0, state.canvasHeight);
+			const endX = event.clientX - state.canvasX;
+			const endY = event.clientY - state.canvasY;
 
 			this.props.setDrawEnd (endX, endY);
 		}
 	}
 
+	onMouseUp ()
+	{
+		this.props.stopDrawing ();
+	}
+
 	onCanvasMouseDown ({ evt })
 	{
 		this.props.startDrawing (evt.offsetX, evt.offsetY);
-	}
-
-	onCanvasMouseUp ()
-	{
-		this.props.stopDrawing ();
 	}
 
 	render ()
@@ -72,7 +89,7 @@ class App extends Component
 
 		const app =
 		(
-			<div onMouseMove={this.onMouseMove.bind (this)}>
+			<div>
 				<Toolbar />
 				<Stage
 					ref='drawingArea'
@@ -81,7 +98,6 @@ class App extends Component
 					height={props.canvasHeight}
 
 					onMouseDown={this.onCanvasMouseDown.bind (this)}
-					onMouseUp={this.onCanvasMouseUp.bind (this)}
 				>
 					<TempCanvas store={props.store} />
 					<MainCanvas store={props.store} />
