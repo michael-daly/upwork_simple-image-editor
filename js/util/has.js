@@ -19,4 +19,4 @@ const hasFunction = ( object, funcName ) =>
 }
 
 
-export default { has, hasFunction };
+export { has, hasFunction };
