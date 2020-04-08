@@ -7,7 +7,7 @@ const defaultState =
 	drawThickness: 8,
 
 	tool:     TOOL_RECTANGLE,
-	toolType: RECT_EMPTY,
+	toolType: RECT_FILL,
 };
 
 
