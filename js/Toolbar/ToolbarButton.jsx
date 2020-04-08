@@ -1,16 +1,11 @@
 import React, { Fragment } from 'react';
 
 
-const ToolbarButton = ({ text, onClick }) =>
+const ToolbarButton = ( props ) =>
 {
-	const fragment =
-	(
-		<Fragment>
-			<input type='button' value={text} onClick={onClick} />
-		</Fragment>
-	);
+	const { text, disabled, onClick, misc = {} } = props;
 
-	return fragment;
+	return <input {...misc} type='button' value={text} onClick={onClick} />;
 };
 
 

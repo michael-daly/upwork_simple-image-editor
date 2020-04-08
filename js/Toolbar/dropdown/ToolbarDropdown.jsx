@@ -1,9 +1,11 @@
 import React from 'react';
 
 
-const ToolbarDropdown = ({ name, list, onSelect }) =>
-(
-	<select onChange={onSelect}>
+const ToolbarDropdown = ( props ) =>
+{
+	const { name, list, onSelect, misc = {} } = props;
+
+	return <select {...misc} onChange={onSelect}>
 	{
 		list.map (({ value, text }, index ) =>
 		{
@@ -11,7 +13,7 @@ const ToolbarDropdown = ({ name, list, onSelect }) =>
 		})
 	}
 	</select>
-);
+};
 
 
 export default ToolbarDropdown;
