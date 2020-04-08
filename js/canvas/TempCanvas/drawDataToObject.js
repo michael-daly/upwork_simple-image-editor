@@ -1,7 +1,7 @@
 import { RECT_FILL } from '~/Toolbar/constants.js';
 
 
-const drawDataToRectangle = ({ color, type, thickness, originX, originY, endX, endY }) =>
+const drawDataToRectangle = ({ color, thickness, type, originX, originY, endX, endY }) =>
 {
 	const rectangle =
 	{
