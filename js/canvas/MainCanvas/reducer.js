@@ -1,11 +1,13 @@
+const { has          } = require ('~/util/has.js');
 const { swapUndoRedo } = require ('~/MainCanvas/swapUndoRedo.js');
 
 
 const defaultState =
 {
-	undoStack: [],
-	redoStack: [],
-	shapes:    [],
+	undoStack:  [],
+	redoStack:  [],
+	shapes:     [],
+	shapeIndex: 0,
 };
 
 
@@ -19,6 +21,11 @@ module.exports = ( state = defaultState, action ) =>
 		case 'ADD_RECTANGLE':
 		{
 			const shapes = state.shapes.slice ();
+
+			if ( !has (payload, 'id') )
+			{
+				payload.id = state.shapeIndex++;
+			}
 
 			shapes.push (payload);
 
@@ -45,7 +52,6 @@ module.exports = ( state = defaultState, action ) =>
 			const undoStack = state.undoStack.slice ();
 
 			payload.isUndoRedo = true;
-
 			undoStack.push (swapUndoRedo (payload));
 
 			// Doing any new undoable action should clear the redo stack.
