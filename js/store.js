@@ -6,12 +6,13 @@ const reducers = combineReducers (
 	global:     require ('~/App/reducer.js'),
 	mainCanvas: require ('~/MainCanvas/reducer.js'),
 	tempCanvas: require ('~/TempCanvas/reducer.js'),
-	toolbar:    require ('~/toolbar/reducer.js'),
+	toolbar:    require ('~/Toolbar/reducer.js'),
 });
 
 const middleware =
 [
-	// require ('./path/to/your/file.js'),
+	require ('~/MainCanvas/middleware.js'),
+	require ('~/Toolbar/middleware.js'),
 ];
 
 const createStoreWithMiddleware = applyMiddleware (...middleware) (createStore);
