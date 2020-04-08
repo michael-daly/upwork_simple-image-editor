@@ -1,11 +1,11 @@
 import React from 'react';
 
 
-const ToolbarDropdown = ({ name, dropdownList, onDropdownSelect }) =>
+const ToolbarDropdown = ({ name, list, onSelect }) =>
 (
-	<select onChange={onDropdownSelect}>
+	<select onChange={onSelect}>
 	{
-		dropdownList.map (({ value, text }, index ) =>
+		list.map (({ value, text }, index ) =>
 		{
 			return <option key={`dropdown-${name}-${index}`}value={value}>{text}</option>;
 		})

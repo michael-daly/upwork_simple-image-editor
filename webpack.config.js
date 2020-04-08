@@ -41,13 +41,14 @@ module.exports =
 	{
 		alias:
 		{
-			'~/App':        path.resolve (__dirname, './js/App/'),
-			'~/Toolbar':    path.resolve (__dirname, './js/Toolbar/'),
-			'~/canvas':     path.resolve (__dirname, './js/canvas/'),
-			'~/MainCanvas': path.resolve (__dirname, './js/canvas/MainCanvas/'),
-			'~/TempCanvas': path.resolve (__dirname, './js/canvas/TempCanvas/'),
-			'~/util':       path.resolve (__dirname, './js/util/'),
-			'~':            path.resolve (__dirname, './js/'),
+			'~/App':             path.resolve (__dirname, './js/App/'),
+			'~/Toolbar':         path.resolve (__dirname, './js/Toolbar/'),
+			'~/ToolbarDropdown': path.resolve (__dirname, './js/Toolbar/dropdown/'),
+			'~/canvas':          path.resolve (__dirname, './js/canvas/'),
+			'~/MainCanvas':      path.resolve (__dirname, './js/canvas/MainCanvas/'),
+			'~/TempCanvas':      path.resolve (__dirname, './js/canvas/TempCanvas/'),
+			'~/util':            path.resolve (__dirname, './js/util/'),
+			'~':                 path.resolve (__dirname, './js/'),
 		}
 	},
 };
