@@ -41,6 +41,11 @@ module.exports = ( state = defaultState, action ) =>
 
 		case 'ADD_UNDO_ACTION':
 		{
+			if ( payload.isUndoRedo )
+			{
+				return state;
+			}
+
 			const undoStack = state.undoStack.slice ();
 
 			undoStack.push (swapUndoRedo (payload));
