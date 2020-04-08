@@ -15,13 +15,15 @@ const drawDataToRectangle = ({ color, thickness, type, originX, originY, endX, e
 		height: Math.abs (originY - endY),
 	};
 
-	if ( type === RECT_FILL )
+	if ( type !== RECT_FILL )
+	{
+		rectangle.stroke      = color;
+		rectangle.strokeWidth = thickness;
+	}
+	else
 	{
 		rectangle.fill = color;
 	}
-
-	rectangle.stroke      = color;
-	rectangle.strokeWidth = thickness;
 
 	return rectangle;
 };
