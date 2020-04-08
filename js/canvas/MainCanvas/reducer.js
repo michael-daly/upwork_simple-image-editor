@@ -11,9 +11,9 @@ const defaultState =
 
 module.exports = ( state = defaultState, action ) =>
 {
-	const { type, payload, isUndoRedo } = action;
+	const { type, payload } = action;
 
-	if ( !isUndoRedo  &&  type !== 'UNDO'  &&  type !== 'REDO' )
+	if ( !action.isUndoRedo  &&  type !== 'UNDO'  &&  type !== 'REDO' )
 	{
 		state = { ...state, redoStack: [] };
 	}
@@ -40,11 +40,6 @@ module.exports = ( state = defaultState, action ) =>
 
 		case 'ADD_UNDO_ACTION':
 		{
-			if ( isUndoRedo )
-			{
-				return state;
-			}
-
 			const undoStack = state.undoStack.slice ();
 
 			payload.isUndoRedo = true;
