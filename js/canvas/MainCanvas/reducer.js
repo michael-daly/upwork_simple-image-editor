@@ -42,7 +42,6 @@ module.exports = ( state = defaultState, action ) =>
 		{
 			if ( isUndoRedo )
 			{
-				console.log ('isUndoRedo');
 				return state;
 			}
 
