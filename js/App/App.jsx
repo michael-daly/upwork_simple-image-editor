@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 
+import { Stage   } from 'react-konva/lib/ReactKonvaCore';
 import { connect } from 'react-redux';
-
-import { Stage } from 'react-konva/lib/ReactKonvaCore';
-
-import * as tempCanvasActions from '~/TempCanvas/actions.js';
 
 import Toolbar    from '~/Toolbar/Toolbar.jsx';
 import MainCanvas from '~/MainCanvas/MainCanvas.jsx';
 import TempCanvas from '~/TempCanvas/TempCanvas.jsx';
 
-import { clamp } from '~/util/clamp.js';
+import { startDrawing, stopDrawing, setDrawEnd } from '~/TempCanvas/actions.js';
+
 
 // ------------------------------------------------
 
@@ -125,8 +123,6 @@ const mapStateToProps = ({ global, tempCanvas }) =>
 
 const mapDispatchToProps = dispatch =>
 {
-	const { startDrawing, stopDrawing, setDrawEnd } = tempCanvasActions;
-
 	const props =
 	{
 		startDrawing ( ...args )
