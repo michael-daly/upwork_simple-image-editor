@@ -1,8 +1,8 @@
-const TOOL_RECTANGLE = 0;
-const TOOL_ARROW     = 1;
+const TOOL_RECTANGLE = 'TOOL_RECTANGLE';
+const TOOL_ARROW     = 'TOOL_ARROW';
 
-const RECT_FILL  = 0;
-const RECT_EMPTY = 1;
+const RECT_FILL  = 'RECT_FILL';
+const RECT_EMPTY = 'RECT_EMPTY';
 
 
 module.exports = { TOOL_RECTANGLE, TOOL_ARROW, RECT_FILL, RECT_EMPTY };
