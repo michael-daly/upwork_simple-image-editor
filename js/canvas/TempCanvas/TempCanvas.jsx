@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 
 import AppCanvas from '~/canvas/AppCanvas.jsx';
 
-import { getDrawDataFromState } from '~/TempCanvas/getDrawDataFromState.js';
-import { drawDataToRectangle  } from '~/TempCanvas/drawDataToObject.js';
+import { getDrawDataFromState                 } from '~/TempCanvas/getDrawDataFromState.js';
+import { drawDataToRectangle, drawDataToArrow } from '~/TempCanvas/drawDataToObject.js';
+
+import { TOOL_RECTANGLE, TOOL_ARROW } from '~/Toolbar/constants.js';
 
 
 class TempCanvas extends Component
@@ -13,16 +15,23 @@ class TempCanvas extends Component
 	render ()
 	{
 		const { props } = this;
+		const { tool  } = props;
 
-		const canvas =
-		(
-			<AppCanvas
-				name='tempCanvas'
-				rectangles={props.isDrawing ? [drawDataToRectangle (props)] : []}
-			/>
-		);
+		let shapes = [];
 
-		return canvas;
+		if ( props.isDrawing )
+		{
+			if ( tool === TOOL_RECTANGLE )
+			{
+				shapes = [drawDataToRectangle (props)];
+			}
+			else if ( tool == TOOL_ARROW )
+			{
+				shapes = [drawDataToArrow (props)];
+			}
+		}
+
+		return <AppCanvas name='tempCanvas' shapes={shapes} />;
 	}
 }
 
@@ -32,6 +41,7 @@ const mapStateToProps = ({ toolbar, tempCanvas }) =>
 	const props = getDrawDataFromState (toolbar, tempCanvas);
 
 	props.isDrawing = tempCanvas.isDrawing;
+	props.tool      = toolbar.tool;
 
 	return props;
 };

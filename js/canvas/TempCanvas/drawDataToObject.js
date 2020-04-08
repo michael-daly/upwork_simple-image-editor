@@ -6,6 +6,8 @@ const drawDataToRectangle = ({ color, thickness, type, originX, originY, endX, e
 {
 	const rectangle =
 	{
+		type: 'rectangle',
+
 		x: (originX <= endX) ? originX : endX,
 		y: (originY <= endY) ? originY : endY,
 
@@ -24,5 +26,25 @@ const drawDataToRectangle = ({ color, thickness, type, originX, originY, endX, e
 	return rectangle;
 };
 
+// Converts tool and mouse position data to arrow data.
+const drawDataToArrow = ({ color, thickness, originX, originY, endX, endY }) =>
+{
+	const arrow =
+	{
+		type: 'arrow',
 
-export { drawDataToRectangle };
+		x: 0,
+		y: 0,
+
+		points: [originX, originY, endX, endY],
+
+		fill:        color,
+		stroke:      color,
+		strokeWidth: thickness,
+	};
+
+	return arrow;
+};
+
+
+export { drawDataToRectangle, drawDataToArrow };

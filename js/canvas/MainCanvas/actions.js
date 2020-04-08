@@ -1,4 +1,4 @@
-import { drawDataToRectangle } from '~/TempCanvas/drawDataToObject.js';
+import { drawDataToRectangle, drawDataToArrow } from '~/TempCanvas/drawDataToObject.js';
 
 
 const addRectangle = drawData =>
@@ -16,6 +16,23 @@ const addRectangle = drawData =>
 const removeRectangle = () =>
 {
 	return { type: 'REMOVE_RECTANGLE', reverseType: 'ADD_RECTANGLE' };
+};
+
+const addArrow = drawData =>
+{
+	const action =
+	{
+		type:        'ADD_ARROW',
+		payload:     drawDataToArrow (drawData),
+		reverseType: 'REMOVE_ARROW',
+	};
+
+	return action;
+};
+
+const removeArrow = () =>
+{
+	return { type: 'REMOVE_ARROW', reverseType: 'ADD_ARROW' };
 };
 
 /**
@@ -56,4 +73,4 @@ const redo = () =>
 };
 
 
-export { addRectangle, removeRectangle, addUndoAction, undo, redo };
+export { addRectangle, removeRectangle, addArrow, removeArrow, addUndoAction, undo, redo };

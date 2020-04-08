@@ -46,6 +46,12 @@ module.exports = store => next => action =>
 			dispatch (addUndoAction (action, 'REMOVE_RECTANGLE'));
 			break;
 		}
+
+		case 'ADD_ARROW':
+		{
+			dispatch (addUndoAction (action, 'REMOVE_ARROW'));
+			break;
+		}
 	}
 
 	return next (action);

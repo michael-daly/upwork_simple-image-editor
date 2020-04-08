@@ -1,7 +1,7 @@
-const { getDrawDataFromState } = require ('~/TempCanvas/getDrawDataFromState.js');
-const { addRectangle }         = require ('~/MainCanvas/actions.js');
+const { getDrawDataFromState   } = require ('~/TempCanvas/getDrawDataFromState.js');
+const { addRectangle, addArrow } = require ('~/MainCanvas/actions.js');
 
-const { TOOL_RECTANGLE, RECT_FILL } = require ('~/Toolbar/constants.js');
+const { TOOL_RECTANGLE, TOOL_ARROW, RECT_FILL } = require ('~/Toolbar/constants.js');
 
 
 /**
@@ -20,22 +20,34 @@ module.exports = store => next => action =>
 		case 'STOP_DRAWING':
 		{
 			const { toolbar, tempCanvas } = state;
+			const { tool } = toolbar;
 
-			// If the shape's width or height is 0, don't add it.
-			if ( tempCanvas.originX - tempCanvas.endX === 0  ||
-				 tempCanvas.originY - tempCanvas.endY === 0 )
+			const diffX = tempCanvas.originX - tempCanvas.endX;
+			const diffY = tempCanvas.originY - tempCanvas.endY;
+
+			// If the rectangle's width or height is 0, don't add it.
+			if ( tool === TOOL_RECTANGLE  &&  (diffX === 0  ||  diffY === 0) )
+			{
+				break;
+			}
+
+			// If the arrow's size is 0, don't add it.
+			if ( tool === TOOL_ARROW  &&  diffX === 0  &&  diffY === 0 )
 			{
 				break;
 			}
 
 			const drawData = getDrawDataFromState (toolbar, tempCanvas);
-			const { tool } = toolbar;
 
 			let addShape = null;
 
 			if ( tool === TOOL_RECTANGLE )
 			{
 				addShape = addRectangle;
+			}
+			else if ( tool === TOOL_ARROW )
+			{
+				addShape = addArrow;
 			}
 
 			if ( addShape !== null )

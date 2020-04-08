@@ -9,7 +9,7 @@ class MainCanvas extends Component
 {
 	render ()
 	{
-		return <AppCanvas name='mainCanvas' rectangles={this.props.rectangles} />;
+		return <AppCanvas name='mainCanvas' shapes={this.props.shapes} />;
 	}
 }
 
@@ -18,7 +18,7 @@ const mapStateToProps = ({ mainCanvas }) =>
 {
 	const props =
 	{
-		rectangles: mainCanvas.rectangles,
+		shapes: mainCanvas.shapes,
 	};
 
 	return props;

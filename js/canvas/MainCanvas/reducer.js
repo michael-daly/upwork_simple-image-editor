@@ -3,9 +3,9 @@ const { swapUndoRedo } = require ('~/MainCanvas/swapUndoRedo.js');
 
 const defaultState =
 {
-	undoStack:  [],
-	redoStack:  [],
-	rectangles: [],
+	undoStack: [],
+	redoStack: [],
+	shapes:    [],
 };
 
 
@@ -15,22 +15,24 @@ module.exports = ( state = defaultState, action ) =>
 
 	switch ( type )
 	{
+		case 'ADD_ARROW':
 		case 'ADD_RECTANGLE':
 		{
-			const rectangles = state.rectangles.slice ();
+			const shapes = state.shapes.slice ();
 
-			rectangles.push (payload);
+			shapes.push (payload);
 
-			return { ...state, rectangles };
+			return { ...state, shapes };
 		}
 
+		case 'REMOVE_ARROW':
 		case 'REMOVE_RECTANGLE':
 		{
-			const rectangles = state.rectangles.slice ();
+			const shapes = state.shapes.slice ();
 
-			rectangles.pop ();
+			shapes.pop ();
 
-			return { ...state, rectangles };
+			return { ...state, shapes };
 		}
 
 		case 'ADD_UNDO_ACTION':

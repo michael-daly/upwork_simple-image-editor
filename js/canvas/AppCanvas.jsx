@@ -1,22 +1,37 @@
 import React, { Component } from 'react';
 
 import 'konva/lib/shapes/Rect';
-import { Layer, Rect } from 'react-konva/lib/ReactKonvaCore';
+import 'konva/lib/shapes/Line';
+
+import { Layer, Rect, Line } from 'react-konva/lib/ReactKonvaCore';
 
 
 class AppCanvas extends Component
 {
 	render ()
 	{
-		const { name, rectangles } = this.props;
+		const { name, shapes } = this.props;
 
 		const layer =
 		(
 			<Layer>
 			{
-				rectangles.map (( object, index ) =>
+				shapes.map (( object, index ) =>
 				{
-					return <Rect key={`${name}-rect-${index}`} {...object} />;
+					const { type } = object;
+
+					if ( type === 'rectangle' )
+					{
+						return <Rect key={`${name}-rect-${index}`} {...object} />;
+					}
+					else if ( type === 'arrow' )
+					{
+						return <Line key={`${name}-line-${index}`} {...object} />;
+					}
+					else
+					{
+						return '';
+					}
 				})
 			}
 			</Layer>
