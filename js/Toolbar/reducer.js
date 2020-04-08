@@ -1,4 +1,4 @@
-const { TOOL_RECTANGLE, RECT_EMPTY } = require ('~/Toolbar/constants.js');
+const { TOOL_RECTANGLE, RECT_FILL } = require ('~/Toolbar/constants.js');
 
 
 const defaultState =
