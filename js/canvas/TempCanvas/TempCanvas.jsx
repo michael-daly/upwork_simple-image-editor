@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import AppCanvas from '~/canvas/AppCanvas.jsx';
 
+import { drawDataFromState   } from '~/TempCanvas/drawDataFromState.js';
 import { drawDataToRectangle } from '~/TempCanvas/drawDataToObject.js';
 
 
@@ -13,9 +14,7 @@ class TempCanvas extends Component
 	{
 		const canvas =
 		(
-			<AppCanvas
-				rectangles={[this.props.isDrawing ? drawDataToRectangle (this.props) : {}]}
-			/>
+			<AppCanvas rectangles={[drawDataToRectangle (this.props)]} />
 		);
 
 		return canvas;
@@ -25,20 +24,9 @@ class TempCanvas extends Component
 
 const mapStateToProps = ({ toolbar, tempCanvas }) =>
 {
-	const props =
-	{
-		color:     toolbar.drawColor,
-		thickness: toolbar.drawThickness,
-		type:      toolbar.toolType,
+	const props = drawDataFromState (toolbar, tempCanvas);
 
-		isDrawing: tempCanvas.isDrawing,
-
-		originX: tempCanvas.originX,
-		originY: tempCanvas.originY,
-
-		endX: tempCanvas.endX,
-		endY: tempCanvas.endY,
-	};
+	props.isDrawing = tempCanvas.isDrawing;
 
 	return props;
 };
