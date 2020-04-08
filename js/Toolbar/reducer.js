@@ -4,7 +4,7 @@ const { TOOL_RECTANGLE, RECT_FILL } = require ('~/Toolbar/constants.js');
 const defaultState =
 {
 	drawColor:     '#3300AA',
-	drawThickness: 2,
+	drawThickness: 8,
 
 	tool:     TOOL_RECTANGLE,
 	toolType: RECT_FILL,
