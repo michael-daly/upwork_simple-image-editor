@@ -1,8 +1,12 @@
-const setImageNumber      = number => { type: 'SET_IMAGE_NUMBER',      payload: number };
-const setImageDescription = desc   => { type: 'SET_IMAGE_DESCRIPTION', payload: desc   };
+const setImageNumber = number =>
+{
+	return { type: 'SET_IMAGE_NUMBER', payload: number };
+};
 
-const setDrawColor   = color => { type: 'SET_DRAW_COLOR',   payload: color };
-const setCurrentTool = tool  => { type: 'SET_CURRENT_TOOL', payload: tool  };
+const setImageDescription = description =>
+{
+	return { type: 'SET_IMAGE_DESCRIPTION', payload: description };
+};
 
 
-export { setImageNumber, setImageDescription, setDrawColor, setCurrentTool };
+export { setImageNumber, setImageDescription };
