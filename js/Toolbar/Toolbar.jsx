@@ -17,18 +17,20 @@ class Toolbar extends Component
 {
 	render ()
 	{
+		const { props } = this;
+
 		const canvas =
 		(
 			<div>
-				<ToolbarButton text='Undo' onClick={this.props.undo.bind (this)} />
-				<ToolbarButton text='Redo' onClick={this.props.redo.bind (this)} />
+				<ToolbarButton text='Undo' onClick={props.undo.bind (this)} />
+				<ToolbarButton text='Redo' onClick={props.redo.bind (this)} />
 
-				<ToolbarButton text='Rectangle' onClick={() => this.props.setTool (TOOL_RECTANGLE)} />
+				<ToolbarButton text='Rectangle' onClick={() => props.setTool (TOOL_RECTANGLE)} />
 				<ToolbarDropdown
 					name='rectangleOptions'
 					list={rectangleOptions}
 
-					onSelect={event => this.props.setToolType (event.target.value)}
+					onSelect={event => props.setToolType (event.target.value)}
 				/>
 			</div>
 		);
