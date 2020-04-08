@@ -11,9 +11,9 @@ const defaultState =
 
 module.exports = ( state = defaultState, action ) =>
 {
-	const { type, payload } = action;
+	const { type, payload, isUndoRedo } = action;
 
-	if ( type !== 'UNDO'  &&  type !== 'REDO' )
+	if ( !isUndoRedo  &&  type !== 'UNDO'  &&  type !== 'REDO' )
 	{
 		state = { ...state, redoStack: [] };
 	}
@@ -29,11 +29,28 @@ module.exports = ( state = defaultState, action ) =>
 			return { ...state, rectangles };
 		}
 
+		case 'REMOVE_RECTANGLE':
+		{
+			const rectangles = state.rectangles.slice ();
+
+			rectangles.pop ();
+
+			return { ...state, rectangles };
+		}
+
 		case 'ADD_UNDO_ACTION':
 		{
+			if ( isUndoRedo )
+			{
+				console.log ('isUndoRedo');
+				return state;
+			}
+
 			const undoStack = state.undoStack.slice ();
 
-			undoStack.push (payload);
+			payload.isUndoRedo = true;
+
+			undoStack.push (swapUndoRedo (payload));
 
 			return { ...state, undoStack };
 		}
@@ -43,13 +60,22 @@ module.exports = ( state = defaultState, action ) =>
 			const undoStack = state.undoStack.slice ();
 			const redoStack = state.redoStack.slice ();
 
+			if ( undoStack.length > 0 )
+			{
+				redoStack.push (swapUndoRedo (undoStack.pop ()));
+			}
+
+			return { ...state, undoStack, redoStack };
+		}
+
+		case 'REDO':
+		{
+			const undoStack = state.undoStack.slice ();
+			const redoStack = state.redoStack.slice ();
+
 			if ( redoStack.length > 0 )
 			{
 				undoStack.push (swapUndoRedo (redoStack.pop ()));
-			}
-			else
-			{
-				undoStack.push (payload);
 			}
 
 			return { ...state, undoStack, redoStack };

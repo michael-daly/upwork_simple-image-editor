@@ -7,6 +7,7 @@ const swapUndoRedo = action =>
 	{
 		type:        action.reverseType,
 		reverseType: action.type,
+		isUndoRedo:  action.isUndoRedo,
 	};
 
 	if ( has (action, 'payload') )

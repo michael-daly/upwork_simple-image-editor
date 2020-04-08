@@ -36,5 +36,15 @@ const addUndoAction = ( action, reverseType, reversePayload ) =>
 	return { type: 'ADD_UNDO_ACTION', payload: undoPayload };
 };
 
+const undo = () =>
+{
+	return { type: 'UNDO' };
+};
 
-export { addRectangle, removeRectangle, addUndoAction };
+const redo = () =>
+{
+	return { type: 'REDO' };
+};
+
+
+export { addRectangle, removeRectangle, addUndoAction, undo, redo };
