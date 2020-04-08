@@ -73,7 +73,10 @@ class App extends Component
 
 	onMouseUp ()
 	{
-		this.props.stopDrawing ();
+		if ( this.props.isDrawing )
+		{
+			this.props.stopDrawing ();
+		}
 	}
 
 	onCanvasMouseDown ({ evt })
