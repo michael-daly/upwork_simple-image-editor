@@ -6,7 +6,7 @@ const defaultState =
 {
 	undoStack:  [],
 	redoStack:  [],
-	shapes:     [],
+	shapes:     {},
 	shapeIndex: 0,
 };
 
@@ -20,14 +20,14 @@ module.exports = ( state = defaultState, action ) =>
 		case 'ADD_ARROW':
 		case 'ADD_RECTANGLE':
 		{
-			const shapes = state.shapes.slice ();
+			const shapes = { ...state.shapes };
 
 			if ( !has (payload, 'id') )
 			{
 				payload.id = state.shapeIndex++;
 			}
 
-			shapes.push (payload);
+			shapes[payload.id] = payload;
 
 			return { ...state, shapes };
 		}
@@ -35,9 +35,9 @@ module.exports = ( state = defaultState, action ) =>
 		case 'REMOVE_ARROW':
 		case 'REMOVE_RECTANGLE':
 		{
-			const shapes = state.shapes.slice ();
+			const shapes = { ...state.shapes };
 
-			shapes.pop ();
+			delete shapes[payload];
 
 			return { ...state, shapes };
 		}

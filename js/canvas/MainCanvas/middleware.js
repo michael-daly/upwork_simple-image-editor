@@ -8,7 +8,7 @@ const { swapUndoRedo  } = require ('~/MainCanvas/swapUndoRedo.js');
  */
 module.exports = store => next => action =>
 {
-	const state = store.getState ();
+	let state = store.getState ();
 
 	const { dispatch } = store;
 
@@ -39,20 +39,23 @@ module.exports = store => next => action =>
 		return next (action);
 	}
 
+	const nextAction     = next (action);
+	const { shapeIndex } = store.getState ().mainCanvas;
+
 	switch ( type )
 	{
 		case 'ADD_RECTANGLE':
 		{
-			dispatch (addUndoAction (action, 'REMOVE_RECTANGLE'));
+			dispatch (addUndoAction ({ ...action }, 'REMOVE_RECTANGLE', shapeIndex - 1));
 			break;
 		}
 
 		case 'ADD_ARROW':
 		{
-			dispatch (addUndoAction (action, 'REMOVE_ARROW'));
+			dispatch (addUndoAction ({ ...action }, 'REMOVE_ARROW',  shapeIndex - 1));
 			break;
 		}
 	}
 
-	return next (action);
+	return nextAction;
 }

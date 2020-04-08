@@ -17,17 +17,17 @@ class TempCanvas extends Component
 		const { props } = this;
 		const { tool  } = props;
 
-		let shapes = [];
+		let shapes = {};
 
 		if ( props.isDrawing )
 		{
 			if ( tool === TOOL_RECTANGLE )
 			{
-				shapes = [drawDataToRectangle (props)];
+				shapes = { 0: drawDataToRectangle (props) };
 			}
 			else if ( tool == TOOL_ARROW )
 			{
-				shapes = [drawDataToArrow (props)];
+				shapes = { 0: drawDataToArrow (props) };
 			}
 		}
 

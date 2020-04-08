@@ -16,8 +16,9 @@ class AppCanvas extends Component
 		(
 			<Layer>
 			{
-				shapes.map (( object, index ) =>
+				Object.keys (shapes).map (( key, index ) =>
 				{
+					const object   = shapes[key];
 					const { type } = object;
 
 					if ( type === 'rectangle' )
