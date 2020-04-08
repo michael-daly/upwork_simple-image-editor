@@ -9,7 +9,7 @@ class MainCanvas extends Component
 {
 	render ()
 	{
-		return <AppCanvas rectangles={this.props.rectangles} />;
+		return <AppCanvas name='mainCanvas' rectangles={this.props.rectangles} />;
 	}
 }
 

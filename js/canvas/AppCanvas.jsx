@@ -8,7 +8,7 @@ class AppCanvas extends Component
 {
 	render ()
 	{
-		const { rectangles } = this.props;
+		const { name, rectangles } = this.props;
 
 		const layer =
 		(
@@ -16,7 +16,7 @@ class AppCanvas extends Component
 			{
 				rectangles.map (( object, index ) =>
 				{
-					return <Rect key={`rect-${index}`} {...object} />;
+					return <Rect key={`${name}-rect-${index}`} {...object} />;
 				})
 			}
 			</Layer>
