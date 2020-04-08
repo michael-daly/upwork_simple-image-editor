@@ -12,7 +12,7 @@ const reducers = combineReducers (
 const middleware =
 [
 	require ('~/MainCanvas/middleware.js'),
-	require ('~/Toolbar/middleware.js'),
+	require ('~/TempCanvas/middleware.js'),
 ];
 
 const createStoreWithMiddleware = applyMiddleware (...middleware) (createStore);
