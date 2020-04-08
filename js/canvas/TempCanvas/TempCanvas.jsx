@@ -12,9 +12,14 @@ class TempCanvas extends Component
 {
 	render ()
 	{
+		const { props } = this;
+
 		const canvas =
 		(
-			<AppCanvas name='tempCanvas' rectangles={[drawDataToRectangle (this.props)]} />
+			<AppCanvas
+				name='tempCanvas'
+				rectangles={props.isDrawing ? [drawDataToRectangle (props)] : []}
+			/>
 		);
 
 		return canvas;
