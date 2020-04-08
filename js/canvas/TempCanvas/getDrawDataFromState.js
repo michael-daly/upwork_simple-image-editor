@@ -1,4 +1,4 @@
-const drawDataFromState = ( toolbar, tempCanvas ) =>
+const getDrawDataFromState = ( toolbar, tempCanvas ) =>
 {
 	const drawData =
 	{
@@ -17,4 +17,4 @@ const drawDataFromState = ( toolbar, tempCanvas ) =>
 };
 
 
-export { drawDataFromState };
+export { getDrawDataFromState };

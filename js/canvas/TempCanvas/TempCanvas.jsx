@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 import AppCanvas from '~/canvas/AppCanvas.jsx';
 
-import { drawDataFromState   } from '~/TempCanvas/drawDataFromState.js';
-import { drawDataToRectangle } from '~/TempCanvas/drawDataToObject.js';
+import { getDrawDataFromState } from '~/TempCanvas/getDrawDataFromState.js';
+import { drawDataToRectangle  } from '~/TempCanvas/drawDataToObject.js';
 
 
 class TempCanvas extends Component
@@ -24,7 +24,7 @@ class TempCanvas extends Component
 
 const mapStateToProps = ({ toolbar, tempCanvas }) =>
 {
-	const props = drawDataFromState (toolbar, tempCanvas);
+	const props = getDrawDataFromState (toolbar, tempCanvas);
 
 	props.isDrawing = tempCanvas.isDrawing;
 

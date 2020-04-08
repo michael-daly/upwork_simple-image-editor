@@ -1,5 +1,5 @@
-const { drawDataFromState } = require ('~/TempCanvas/drawDataFromState.js');
-const { addRectangle }      = require ('~/MainCanvas/actions.js');
+const { getDrawDataFromState } = require ('~/TempCanvas/getDrawDataFromState.js');
+const { addRectangle }         = require ('~/MainCanvas/actions.js');
 
 const { TOOL_RECTANGLE, RECT_FILL } = require ('~/Toolbar/constants.js');
 
@@ -17,13 +17,14 @@ module.exports = store => next => action =>
 		{
 			const { toolbar, tempCanvas } = state;
 
+			// If the object's width or height is 0, don't add it.
 			if ( tempCanvas.originX - tempCanvas.endX === 0  ||
 				 tempCanvas.originY - tempCanvas.endY === 0 )
 			{
 				break;
 			}
 
-			const drawData = drawDataFromState (toolbar, tempCanvas);
+			const drawData = getDrawDataFromState (toolbar, tempCanvas);
 			const { tool } = toolbar;
 
 			let addFunction = null;
