@@ -21,7 +21,7 @@ module.exports = store => next => action =>
 		{
 			const { toolbar, tempCanvas } = state;
 
-			// If the object's width or height is 0, don't add it.
+			// If the shape's width or height is 0, don't add it.
 			if ( tempCanvas.originX - tempCanvas.endX === 0  ||
 				 tempCanvas.originY - tempCanvas.endY === 0 )
 			{
