@@ -1,3 +1,4 @@
+// Gets data from toolbar and tempCanvas states and converts them into tool and mouse position data.
 const getDrawDataFromState = ( toolbar, tempCanvas ) =>
 {
 	const drawData =

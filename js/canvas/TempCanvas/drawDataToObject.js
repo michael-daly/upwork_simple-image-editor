@@ -1,6 +1,7 @@
 import { RECT_FILL } from '~/Toolbar/constants.js';
 
 
+// Converts tool and mouse position data to rectangle data.
 const drawDataToRectangle = ({ color, thickness, type, originX, originY, endX, endY }) =>
 {
 	const rectangle =

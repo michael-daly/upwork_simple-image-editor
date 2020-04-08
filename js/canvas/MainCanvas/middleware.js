@@ -2,9 +2,15 @@ const { addUndoAction } = require ('~/MainCanvas/actions.js');
 const { swapUndoRedo  } = require ('~/MainCanvas/swapUndoRedo.js');
 
 
+/**
+ * The main purpose of this middleware is to handle undo/redo actions, adding to the undo stack
+ * when an undoable action is dispatched.
+ */
 module.exports = store => next => action =>
 {
 	const state = store.getState ();
+
+	const { dispatch } = store;
 
 	const { undoStack, redoStack } = state.mainCanvas;
 	const { type, payload }        = action;
@@ -20,11 +26,14 @@ module.exports = store => next => action =>
 		actionStack = redoStack;
 	}
 
+	// Dispatch the last action from the undo/redo stack, if we're undoing/redoing and if there's
+	// even anything there.
 	if ( actionStack !== null  &&  actionStack.length > 0 )
 	{
-		store.dispatch (actionStack[actionStack.length - 1]);
+		dispatch (actionStack[actionStack.length - 1]);
 	}
 
+	// We don't want to add another undo action to the stack if we're already dispatching one.
 	if ( action.isUndoRedo )
 	{
 		return next (action);
@@ -34,7 +43,7 @@ module.exports = store => next => action =>
 	{
 		case 'ADD_RECTANGLE':
 		{
-			store.dispatch (addUndoAction (action, 'REMOVE_RECTANGLE'));
+			dispatch (addUndoAction (action, 'REMOVE_RECTANGLE'));
 			break;
 		}
 	}

@@ -1,6 +1,13 @@
 import { has } from '~/util/has.js';
 
 
+/**
+ * Swaps undo and redo commands.
+ *
+ * This is for easy toggling between the two when we undo, redo, or add a new undoable command.
+ *
+ * @see {~/MainCanvas/reducer.js}
+ */
 const swapUndoRedo = action =>
 {
 	const swapped =

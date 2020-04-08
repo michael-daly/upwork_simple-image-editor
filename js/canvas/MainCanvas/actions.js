@@ -18,6 +18,14 @@ const removeRectangle = () =>
 	return { type: 'REMOVE_RECTANGLE', reverseType: 'ADD_RECTANGLE' };
 };
 
+/**
+ * Creates an undoable action.
+ *
+ * `reverseType` and `reversePayload` is the command that gets called when said action is undone.
+ * These get swapped with `type` and `payload` when redoing.
+ *
+ * @see {~/MainCanvas/swapUndoRedo.js}
+ */
 const addUndoAction = ( action, reverseType, reversePayload ) =>
 {
 	const undoPayload =
