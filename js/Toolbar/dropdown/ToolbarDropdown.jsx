@@ -12,7 +12,7 @@ const ToolbarDropdown = ( props ) =>
 			return <option key={`dropdown-${name}-${index}`}value={value}>{text}</option>;
 		})
 	}
-	</select>
+	</select>;
 };
 
 

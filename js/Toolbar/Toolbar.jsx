@@ -19,37 +19,32 @@ class Toolbar extends Component
 	{
 		const { props } = this;
 
-		const canvas =
-		(
-			<div>
-				<ToolbarButton text='Undo' onClick={props.undo.bind (this)} />
-				<ToolbarButton text='Redo' onClick={props.redo.bind (this)} />
+		return <div>
+			<ToolbarButton text='Undo' onClick={props.undo.bind (this)} />
+			<ToolbarButton text='Redo' onClick={props.redo.bind (this)} />
 
-				<ToolbarButton
-					text='Rectangle'
-					misc={{ disabled: props.tool === TOOL_RECTANGLE }}
+			<ToolbarButton
+				text='Rectangle'
+				misc={{ disabled: props.tool === TOOL_RECTANGLE }}
 
-					onClick={() => props.setTool (TOOL_RECTANGLE)}
-				/>
-				<ToolbarDropdown
-					name='rectangleOptions'
-					list={rectangleOptions}
+				onClick={() => props.setTool (TOOL_RECTANGLE)}
+			/>
+			<ToolbarDropdown
+				name='rectangleOptions'
+				list={rectangleOptions}
 
-					misc={{ disabled: props.tool !== TOOL_RECTANGLE }}
+				misc={{ disabled: props.tool !== TOOL_RECTANGLE }}
 
-					onSelect={event => props.setToolType (event.target.value)}
-				/>
+				onSelect={event => props.setToolType (event.target.value)}
+			/>
 
-				<ToolbarButton
-					text='Arrow'
-					misc={{ disabled: props.tool === TOOL_ARROW }}
+			<ToolbarButton
+				text='Arrow'
+				misc={{ disabled: props.tool === TOOL_ARROW }}
 
-					onClick={() => props.setTool (TOOL_ARROW)}
-				/>
-			</div>
-		);
-
-		return canvas;
+				onClick={() => props.setTool (TOOL_ARROW)}
+			/>
+		</div>;
 	}
 }
 
