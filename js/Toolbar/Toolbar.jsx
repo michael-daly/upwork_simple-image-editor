@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
@@ -27,14 +27,14 @@ class Toolbar extends Component
 	{
 		const canvas =
 		(
-			<Fragment>
+			<div>
 				<ToolbarButton text='Rectangle' onClick={() => this.setTool (TOOL_RECTANGLE)}/>
 				<ToolbarDropdown
 					name='rectangleOptions'
 					list={rectangleOptions}
 					onSelect={this.setToolType.bind (this)}
 				/>
-			</Fragment>
+			</div>
 		);
 
 		return canvas;
