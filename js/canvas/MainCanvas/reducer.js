@@ -13,6 +13,7 @@ module.exports = ( state = defaultState, action ) =>
 {
 	const { type, payload } = action;
 
+	// Doing anything other than an undo/redo action should clear the redo stack.
 	if ( !action.isUndoRedo  &&  type !== 'UNDO'  &&  type !== 'REDO' )
 	{
 		state = { ...state, redoStack: [] };
@@ -41,8 +42,6 @@ module.exports = ( state = defaultState, action ) =>
 		case 'ADD_UNDO_ACTION':
 		{
 			const undoStack = state.undoStack.slice ();
-
-			payload.isUndoRedo = true;
 
 			undoStack.push (swapUndoRedo (payload));
 

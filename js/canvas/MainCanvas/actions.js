@@ -24,8 +24,9 @@ const addUndoAction = ( action, reverseType, reversePayload ) =>
 	{
 		reverseType,
 
-		type:    action.type,
-		payload: action.payload,
+		type:       action.type,
+		payload:    action.payload,
+		isUndoRedo: true,
 	};
 
 	if ( typeof reversePayload !== 'undefined' )
