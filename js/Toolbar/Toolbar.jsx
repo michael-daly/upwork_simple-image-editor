@@ -3,9 +3,12 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import ToolbarButton   from '~/Toolbar/ToolbarButton.jsx';
-import ToolbarDropdown from '~/Toolbar/ToolbarDropdown.jsx';
+import ToolbarDropdown from '~/ToolbarDropdown/ToolbarDropdown.jsx';
 
-import { TOOL_RECTANGLE } from '~/Toolbar/constants.js';
+import { rectangleOptions     } from '~/ToolbarDropdown/rectangle.js';
+import { setTool, setToolType } from '~/Toolbar/actions.js';
+
+import { TOOL_RECTANGLE, RECT_FILL, RECT_EMPTY } from '~/Toolbar/constants.js';
 
 
 class Toolbar extends Component
@@ -15,13 +18,18 @@ class Toolbar extends Component
 		this.props.setTool (tool);
 	}
 
+	setToolType ( event )
+	{
+		this.props.setToolType (event.target.value);
+	}
+
 	render ()
 	{
 		const canvas =
 		(
 			<Fragment>
 				<ToolbarButton text='Rectangle' onClick={() => this.setTool (TOOL_RECTANGLE)}/>
-				<ToolbarDropdown dropdownList={[{ text: 'Test', value: 'test' }]} />
+				<ToolbarDropdown list={rectangleOptions} onSelect={this.setToolType.bind (this)} />
 			</Fragment>
 		);
 
@@ -46,8 +54,13 @@ const mapDispatchToProps = dispatch =>
 	{
 		setTool ( ...args )
 		{
-			dispatch (setCurrentTool (...args));
-		}
+			dispatch (setTool (...args));
+		},
+
+		setToolType ( ...args )
+		{
+			dispatch (setToolType (...args));
+		},
 	};
 
 	return props;

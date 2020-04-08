@@ -6,8 +6,8 @@ const defaultState =
 	drawColor:     '#3300AA',
 	drawThickness: 8,
 
-	currentTool: TOOL_RECTANGLE,
-	toolType:    RECT_EMPTY,
+	tool:     TOOL_RECTANGLE,
+	toolType: RECT_EMPTY,
 };
 
 
@@ -19,7 +19,7 @@ module.exports = ( state = defaultState, action ) =>
 	{
 		case 'SET_DRAW_COLOR':     return { ...state, drawColor:     payload };
 		case 'SET_DRAW_THICKNESS': return { ...state, drawThickness: payload };
-		case 'SET_CURRENT_TOOL':   return { ...state, currentTool:   payload };
+		case 'SET_TOOL':           return { ...state, tool:          payload };
 		case 'SET_TOOL_TYPE':      return { ...state, toolType:      payload };
 	}
 
