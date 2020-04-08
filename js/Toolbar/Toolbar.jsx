@@ -29,7 +29,11 @@ class Toolbar extends Component
 		(
 			<Fragment>
 				<ToolbarButton text='Rectangle' onClick={() => this.setTool (TOOL_RECTANGLE)}/>
-				<ToolbarDropdown list={rectangleOptions} onSelect={this.setToolType.bind (this)} />
+				<ToolbarDropdown
+					name='rectangleOptions'
+					list={rectangleOptions}
+					onSelect={this.setToolType.bind (this)}
+				/>
 			</Fragment>
 		);
 
