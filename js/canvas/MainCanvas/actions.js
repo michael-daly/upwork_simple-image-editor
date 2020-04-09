@@ -1,3 +1,5 @@
+import { deepcopy } from '~/util/deepcopy.js';
+
 import { drawDataToRectangle, drawDataToArrow } from '~/TempCanvas/drawDataToObject.js';
 
 
@@ -45,6 +47,9 @@ const removeArrow = () =>
  */
 const addUndoAction = ( action, reverseType, reversePayload ) =>
 {
+	action         = deepcopy (action);
+	reversePayload = deepcopy (reversePayload);
+
 	const undoPayload =
 	{
 		reverseType,
