@@ -29,4 +29,4 @@ const isNothing = value =>
 };
 
 
-export default { isArray, isObject, isString, isNumber, isInteger, isNothing };
+export { isArray, isObject, isString, isNumber, isInteger, isNothing };
