@@ -15,9 +15,9 @@ const addRectangle = drawData =>
 	return action;
 };
 
-const removeRectangle = () =>
+const removeRectangle = id =>
 {
-	return { type: 'REMOVE_RECTANGLE', reverseType: 'ADD_RECTANGLE' };
+	return { type: 'REMOVE_RECTANGLE', payload: id, reverseType: 'ADD_RECTANGLE' };
 };
 
 const addArrow = drawData =>
@@ -32,9 +32,9 @@ const addArrow = drawData =>
 	return action;
 };
 
-const removeArrow = () =>
+const removeArrow = id =>
 {
-	return { type: 'REMOVE_ARROW', reverseType: 'ADD_ARROW' };
+	return { type: 'REMOVE_ARROW', payload: id, reverseType: 'ADD_ARROW' };
 };
 
 /**

@@ -12,22 +12,30 @@ class AppCanvas extends Component
 	{
 		const { name, shapes } = this.props;
 
+		let { onShapeClick } = this.props;
+
+		if ( onShapeClick === null )
+		{
+			onShapeClick = function () {};
+		}
+
 		const layer =
 		(
 			<Layer>
 			{
 				Object.keys (shapes).map (( key, index ) =>
 				{
-					const object   = shapes[key];
-					const { type } = object;
+					const shape = shapes[key];
+
+					const { id, type } = shape;
 
 					if ( type === 'rectangle' )
 					{
-						return <Rect key={`${name}-rect-${index}`} {...object} />;
+						return <Rect key={`${name}-rect-${id}`} {...shape} onClick={onShapeClick} />;
 					}
 					else if ( type === 'arrow' )
 					{
-						return <Line key={`${name}-line-${index}`} {...object} />;
+						return <Line key={`${name}-line-${id}`} {...shape} onClick={onShapeClick} />;
 					}
 					else
 					{

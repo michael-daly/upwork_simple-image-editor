@@ -1,4 +1,6 @@
-const { dispatchUndoAction } = require ('~/MainCanvas/dispatchUndoAction.js');
+const { has } = require ('~/util/has.js');
+
+const { createUndoAction } = require ('~/MainCanvas/createUndoAction.js');
 
 
 /**
@@ -45,9 +47,9 @@ module.exports = store => next => action =>
 
 	let prevShape = null;
 
-	if ( Object.keys (prevShapes).length > 0 )
+	if ( has (prevShapes, payload) )
 	{
-		prevShape = prevShapes[state.mainCanvas.shapeIndex - 1];
+		prevShape = prevShapes[payload];
 	}
 
 	// Let the rest of the actions run and /then/ add the undo action.
@@ -59,25 +61,25 @@ module.exports = store => next => action =>
 	{
 		case 'ADD_RECTANGLE':
 		{
-			dispatchUndoAction (store.dispatch, action, 'REMOVE_RECTANGLE', shapeIndex - 1);
+			createUndoAction (store.dispatch, action, 'REMOVE_RECTANGLE', shapeIndex - 1);
 			break;
 		}
 
 		case 'ADD_ARROW':
 		{
-			dispatchUndoAction (store.dispatch, action, 'REMOVE_ARROW', shapeIndex - 1);
+			createUndoAction (store.dispatch, action, 'REMOVE_ARROW', shapeIndex - 1);
 			break;
 		}
 
 		case 'REMOVE_RECTANGLE':
 		{
-			dispatchUndoAction (store.dispatch, action, 'ADD_RECTANGLE', prevShape);
+			createUndoAction (store.dispatch, action, 'ADD_RECTANGLE', prevShape);
 			break;
 		}
 
 		case 'REMOVE_ARROW':
 		{
-			dispatchUndoAction (store.dispatch, action, 'ADD_ARROW', prevShape);
+			createUndoAction (store.dispatch, action, 'ADD_ARROW', prevShape);
 			break;
 		}
 	}

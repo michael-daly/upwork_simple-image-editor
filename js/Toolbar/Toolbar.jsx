@@ -10,7 +10,15 @@ import { rectangleOptions} from '~/ToolbarDropdown/rectangle.js';
 import { setTool, setToolType } from '~/Toolbar/actions.js';
 import { undo,    redo        } from '~/MainCanvas/actions.js';
 
-import { TOOL_RECTANGLE, TOOL_ARROW, RECT_FILL, RECT_EMPTY } from '~/Toolbar/constants.js';
+import
+{
+	TOOL_RECTANGLE,
+	TOOL_ARROW,
+	TOOL_ERASER,
+	RECT_FILL,
+	RECT_EMPTY
+}
+from '~/Toolbar/constants.js';
 
 
 class Toolbar extends Component
@@ -43,6 +51,13 @@ class Toolbar extends Component
 				misc={{ disabled: props.tool === TOOL_ARROW }}
 
 				onClick={() => props.setTool (TOOL_ARROW)}
+			/>
+
+			<ToolbarButton
+				text='Eraser'
+				misc={{ disabled: props.tool === TOOL_ERASER }}
+
+				onClick={() => props.setTool (TOOL_ERASER)}
 			/>
 		</div>;
 	}

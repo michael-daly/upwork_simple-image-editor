@@ -1,24 +1,40 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+
 import AppCanvas from '~/canvas/AppCanvas.jsx';
 
-import { connect } from 'react-redux';
+import { removeRectangle, removeArrow } from '~/MainCanvas/actions.js';
+
+import { TOOL_ERASER } from '~/Toolbar/constants.js';
 
 
 class MainCanvas extends Component
 {
+	onShapeClick ( event )
+	{
+		if ( this.props.tool === TOOL_ERASER )
+		{
+			this.props.onShapeClick (event.target.attrs);
+		}
+	}
 	render ()
 	{
-		return <AppCanvas name='mainCanvas' shapes={this.props.shapes} />;
+		return <AppCanvas
+			name='mainCanvas'
+			shapes={this.props.shapes}
+			onShapeClick={this.onShapeClick.bind (this)}
+		/>;
 	}
 }
 
 
-const mapStateToProps = ({ mainCanvas }) =>
+const mapStateToProps = ({ toolbar, mainCanvas }) =>
 {
 	const props =
 	{
 		shapes: mainCanvas.shapes,
+		tool:   toolbar.tool,
 	};
 
 	return props;
@@ -26,7 +42,28 @@ const mapStateToProps = ({ mainCanvas }) =>
 
 const mapDispatchToProps = dispatch =>
 {
-	const props = {};
+	const props =
+	{
+		onShapeClick ( shape )
+		{
+			let removeShape = null;
+
+			if ( shape.type === 'rectangle' )
+			{
+				removeShape = removeRectangle;
+			}
+			else if ( shape.type === 'arrow' )
+			{
+				removeShape = removeArrow;
+			}
+			else
+			{
+				return;
+			}
+
+			dispatch (removeShape (shape.id));
+		}
+	};
 
 	return props;
 };

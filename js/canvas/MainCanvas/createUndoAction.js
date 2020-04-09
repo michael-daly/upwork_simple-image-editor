@@ -1,10 +1,10 @@
 const { addUndoAction } = require ('~/MainCanvas/actions.js');
 
 
-const dispatchUndoAction = ( dispatch, action, reverseType, reversePayload ) =>
+const createUndoAction = ( dispatch, action, reverseType, reversePayload ) =>
 {
 	dispatch (addUndoAction (action, reverseType, reversePayload));
 };
 
 
-export { dispatchUndoAction };
+export { createUndoAction };
