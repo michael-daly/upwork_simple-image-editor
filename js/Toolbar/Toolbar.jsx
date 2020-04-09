@@ -15,8 +15,6 @@ import
 	TOOL_RECTANGLE,
 	TOOL_ARROW,
 	TOOL_ERASER,
-	RECT_FILL,
-	RECT_EMPTY
 }
 from '~/Toolbar/constants.js';
 

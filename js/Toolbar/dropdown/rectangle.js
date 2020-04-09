@@ -1,10 +1,10 @@
-import { RECT_FILL, RECT_EMPTY } from '~/Toolbar/constants.js';
+import { RECT_FILL, RECT_OUTLINE } from '~/Toolbar/constants.js';
 
 
 const rectangleOptions =
 [
-	{ text: 'Fill',  value: RECT_FILL  },
-	{ text: 'Empty', value: RECT_EMPTY },
+	{ text: 'Fill',    value: RECT_FILL    },
+	{ text: 'Outline', value: RECT_OUTLINE },
 ];
 
 
