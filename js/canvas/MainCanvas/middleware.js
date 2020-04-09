@@ -1,5 +1,4 @@
-const { addUndoAction } = require ('~/MainCanvas/actions.js');
-const { swapUndoRedo  } = require ('~/MainCanvas/swapUndoRedo.js');
+const { dispatchUndoAction } = require ('~/MainCanvas/dispatchUndoAction.js');
 
 
 /**
@@ -10,27 +9,26 @@ module.exports = store => next => action =>
 {
 	let state = store.getState ();
 
-	const { dispatch } = store;
+	const { type, payload } = action;
 
-	const { undoStack, redoStack } = state.mainCanvas;
-	const { type, payload }        = action;
-
-	let actionStack = null;
-
-	if ( type === 'UNDO' )
+	if ( type === 'UNDO'  ||  type === 'REDO' )
 	{
-		actionStack = undoStack;
-	}
-	else if ( type === 'REDO' )
-	{
-		actionStack = redoStack;
-	}
+		let actionStack = null;
 
-	// Dispatch the last action from the undo/redo stack, if we're undoing/redoing and if there's
-	// even anything there.
-	if ( actionStack !== null  &&  actionStack.length > 0 )
-	{
-		dispatch (actionStack[actionStack.length - 1]);
+		if ( type === 'UNDO' )
+		{
+			actionStack = state.mainCanvas.undoStack;
+		}
+		else
+		{
+			actionStack = state.mainCanvas.redoStack;
+		}
+
+		// Dispatch the last action from the undo/redo stack, if there's even anything there.
+		if ( actionStack.length > 0 )
+		{
+			store.dispatch (actionStack[actionStack.length - 1]);
+		}
 	}
 
 	// We don't want to add another undo action to the stack if we're already dispatching one.
@@ -39,20 +37,47 @@ module.exports = store => next => action =>
 		return next (action);
 	}
 
-	const nextAction     = next (action);
+	/**
+	 * If we're deleting a shape, we have to get its reference before it gets removed so we can
+	 * recreate it if we need to undo.
+	 */
+	const prevShapes = state.mainCanvas.shapes;
+
+	let prevShape = null;
+
+	if ( Object.keys (prevShapes).length > 0 )
+	{
+		prevShape = prevShapes[state.mainCanvas.shapeIndex - 1];
+	}
+
+	// Let the rest of the actions run and /then/ add the undo action.
+	const nextAction = next (action);
+
 	const { shapeIndex } = store.getState ().mainCanvas;
 
 	switch ( type )
 	{
 		case 'ADD_RECTANGLE':
 		{
-			dispatch (addUndoAction ({ ...action }, 'REMOVE_RECTANGLE', shapeIndex - 1));
+			dispatchUndoAction (store.dispatch, action, 'REMOVE_RECTANGLE', shapeIndex - 1);
 			break;
 		}
 
 		case 'ADD_ARROW':
 		{
-			dispatch (addUndoAction ({ ...action }, 'REMOVE_ARROW',  shapeIndex - 1));
+			dispatchUndoAction (store.dispatch, action, 'REMOVE_ARROW', shapeIndex - 1);
+			break;
+		}
+
+		case 'REMOVE_RECTANGLE':
+		{
+			dispatchUndoAction (store.dispatch, action, 'ADD_RECTANGLE', prevShape);
+			break;
+		}
+
+		case 'REMOVE_ARROW':
+		{
+			dispatchUndoAction (store.dispatch, action, 'ADD_ARROW', prevShape);
 			break;
 		}
 	}
