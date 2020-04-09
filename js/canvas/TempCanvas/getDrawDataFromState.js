@@ -5,7 +5,7 @@ const getDrawDataFromState = ( toolbar, tempCanvas ) =>
 	{
 		color:     toolbar.drawColor,
 		thickness: toolbar.drawThickness,
-		type:      toolbar.toolType,
+		subtype:   toolbar.toolType,
 
 		originX: tempCanvas.originX,
 		originY: tempCanvas.originY,

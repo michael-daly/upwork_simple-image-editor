@@ -5,6 +5,8 @@ import 'konva/lib/shapes/Line';
 
 import { Layer, Rect, Line } from 'react-konva/lib/ReactKonvaCore';
 
+import RectangleShape from '~/shapes/RectangleShape.jsx';
+
 
 class AppCanvas extends Component
 {
@@ -31,7 +33,11 @@ class AppCanvas extends Component
 
 					if ( type === 'rectangle' )
 					{
-						return <Rect key={`${name}-rect-${id}`} {...shape} onClick={onShapeClick} />;
+						return <RectangleShape
+							key={`${name}-rect-${id}`}
+							shapeData={shape}
+							onClick={onShapeClick}
+						/>;
 					}
 					else if ( type === 'arrow' )
 					{

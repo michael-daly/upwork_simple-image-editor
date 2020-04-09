@@ -2,27 +2,45 @@ import { RECT_FILL } from '~/Toolbar/constants.js';
 
 
 // Converts tool and mouse position data to rectangle data.
-const drawDataToRectangle = ({ color, thickness, type, originX, originY, endX, endY }) =>
+const drawDataToRectangle = ({ color, thickness, subtype, originX, originY, endX, endY }) =>
 {
+	const x = (originX <= endX) ? originX : endX;
+	const y = (originY <= endY) ? originY : endY;
+
+	const width  = Math.abs (originX - endX);
+	const height = Math.abs (originY - endY);
+
 	const rectangle =
 	{
 		type: 'rectangle',
 
-		x: (originX <= endX) ? originX : endX,
-		y: (originY <= endY) ? originY : endY,
+		subtype,
 
-		width:  Math.abs (originX - endX),
-		height: Math.abs (originY - endY),
+		width,
+		height,
 	};
 
-	if ( type !== RECT_FILL )
+	if ( subtype !== RECT_FILL )
 	{
 		rectangle.stroke      = color;
 		rectangle.strokeWidth = thickness;
+
+		// We use a line with points instead of an outline rectangle so when we get more accurate
+		// click detection.
+		rectangle.points =
+		[
+			x,         y,
+			x + width, y,
+			x + width, y + height,
+			x,         y + height,
+			x,         y - (thickness / 2),
+		];
 	}
 	else
 	{
 		rectangle.fill = color;
+		rectangle.x    = x;
+		rectangle.y    = y;
 	}
 
 	return rectangle;
@@ -35,8 +53,9 @@ const drawDataToArrow = ({ color, thickness, originX, originY, endX, endY }) =>
 	{
 		type: 'arrow',
 
-		x: 0,
-		y: 0,
+		// FIXME: ?
+		// x: 0,
+		// y: 0,
 
 		points: [originX, originY, endX, endY],
 
