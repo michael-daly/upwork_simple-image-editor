@@ -53,16 +53,13 @@ const drawDataToArrow = ({ color, thickness, originX, originY, endX, endY }) =>
 	{
 		type: 'arrow',
 
-		// FIXME: ?
-		// x: 0,
-		// y: 0,
-
 		points: [originX, originY, endX, endY],
 
 		fill:        color,
 		stroke:      color,
 		strokeWidth: thickness,
 	};
+	
 
 	return arrow;
 };

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 import 'konva/lib/shapes/Rect';
-import 'konva/lib/shapes/Line';
+import 'konva/lib/shapes/Arrow';
 
-import { Layer, Rect, Line } from 'react-konva/lib/ReactKonvaCore';
+import { Layer, Rect, Arrow } from 'react-konva/lib/ReactKonvaCore';
 
 import RectangleShape from '~/shapes/RectangleShape.jsx';
 
@@ -41,7 +41,11 @@ class AppCanvas extends Component
 					}
 					else if ( type === 'arrow' )
 					{
-						return <Line key={`${name}-line-${id}`} {...shape} onClick={onShapeClick} />;
+						return <Arrow
+							key={`${name}-arrow-${id}`}
+							{...shape}
+							onClick={onShapeClick}
+						/>;
 					}
 					else
 					{
