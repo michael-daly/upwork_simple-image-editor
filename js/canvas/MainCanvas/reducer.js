@@ -42,6 +42,16 @@ module.exports = ( state = defaultState, action ) =>
 			return { ...state, shapes };
 		}
 
+		case 'SET_SHAPES':
+		{
+			return { ...state, shapes: payload };
+		}
+
+		case 'CLEAR_SHAPES':
+		{
+			return { ...state, shapes: {} };
+		}
+
 		case 'ADD_UNDO_ACTION':
 		{
 			if ( payload.isUndoRedo )

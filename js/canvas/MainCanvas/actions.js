@@ -7,9 +7,8 @@ const addRectangle = drawData =>
 {
 	const action =
 	{
-		type:        'ADD_RECTANGLE',
-		payload:     drawDataToRectangle (drawData),
-		reverseType: 'REMOVE_RECTANGLE',
+		type:    'ADD_RECTANGLE',
+		payload: drawDataToRectangle (drawData),
 	};
 
 	return action;
@@ -17,16 +16,15 @@ const addRectangle = drawData =>
 
 const removeRectangle = id =>
 {
-	return { type: 'REMOVE_RECTANGLE', payload: id, reverseType: 'ADD_RECTANGLE' };
+	return { type: 'REMOVE_RECTANGLE', payload: id };
 };
 
 const addArrow = drawData =>
 {
 	const action =
 	{
-		type:        'ADD_ARROW',
-		payload:     drawDataToArrow (drawData),
-		reverseType: 'REMOVE_ARROW',
+		type:    'ADD_ARROW',
+		payload: drawDataToArrow (drawData),
 	};
 
 	return action;
@@ -34,7 +32,12 @@ const addArrow = drawData =>
 
 const removeArrow = id =>
 {
-	return { type: 'REMOVE_ARROW', payload: id, reverseType: 'ADD_ARROW' };
+	return { type: 'REMOVE_ARROW', payload: id };
+};
+
+const clearShapes = () =>
+{
+	return { type: 'CLEAR_SHAPES' };
 };
 
 /**
@@ -78,4 +81,4 @@ const redo = () =>
 };
 
 
-export { addRectangle, removeRectangle, addArrow, removeArrow, addUndoAction, undo, redo };
+export { addRectangle, removeRectangle, addArrow, removeArrow, clearShapes, addUndoAction, undo, redo };

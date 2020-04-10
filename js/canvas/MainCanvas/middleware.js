@@ -82,6 +82,12 @@ module.exports = store => next => action =>
 			createUndoAction (store.dispatch, action, 'ADD_ARROW', prevShape);
 			break;
 		}
+
+		case 'CLEAR_SHAPES':
+		{
+			createUndoAction (store.dispatch, action, 'SET_SHAPES', prevShapes);
+			break;
+		}
 	}
 
 	return nextAction;

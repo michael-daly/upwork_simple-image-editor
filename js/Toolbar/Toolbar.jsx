@@ -7,8 +7,8 @@ import ToolbarDropdown from '~/ToolbarDropdown/ToolbarDropdown.jsx';
 
 import { rectangleOptions} from '~/ToolbarDropdown/rectangle.js';
 
-import { setTool, setToolType } from '~/Toolbar/actions.js';
-import { undo,    redo        } from '~/MainCanvas/actions.js';
+import { setTool, setToolType    } from '~/Toolbar/actions.js';
+import { clearShapes, undo, redo } from '~/MainCanvas/actions.js';
 
 import
 {
@@ -26,8 +26,9 @@ class Toolbar extends Component
 		const { props } = this;
 
 		return <div>
-			<ToolbarButton text='Undo' onClick={props.undo.bind (this)} />
-			<ToolbarButton text='Redo' onClick={props.redo.bind (this)} />
+			<ToolbarButton text='Clear' onClick={props.clear.bind (this)} />
+			<ToolbarButton text='Undo'  onClick={props.undo.bind (this)} />
+			<ToolbarButton text='Redo'  onClick={props.redo.bind (this)} />
 
 			<ToolbarButton
 				text='Rectangle'
@@ -76,6 +77,11 @@ const mapDispatchToProps = dispatch =>
 {
 	const props =
 	{
+		clear ()
+		{
+			dispatch (clearShapes ());
+		},
+
 		undo ()
 		{
 			dispatch (undo ());
