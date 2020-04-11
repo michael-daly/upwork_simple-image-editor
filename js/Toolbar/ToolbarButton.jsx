@@ -1,11 +1,38 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 
 
-const ToolbarButton = ( props ) =>
+class ToolbarButton extends Component
 {
-	const { text, disabled, onClick, misc = {} } = props;
+	onFileUploaded ( event )
+	{
+		const { props } = this;
 
-	return <input {...misc} type='button' value={text} onClick={onClick} />;
+		const file   = event.target.files[0];
+		const reader = new FileReader ();
+
+		reader.readAsDataURL (file);
+
+		reader.onload = loadedFile =>
+		{
+			props.onUpload (loadedFile);
+		};
+	}
+
+	render ()
+	{
+		const { type, text, onClick = () => {}, onUpload = () => {}, misc = {} } = this.props;
+
+		if ( type === 'file' )
+		{
+			return <input
+				{...misc}
+				type='file'
+				onChange={this.onFileUploaded.bind (this)}
+			/>;
+		}
+
+		return <input {...misc} type='button' value={text} onClick={onClick} />;
+	}
 };
 
 
