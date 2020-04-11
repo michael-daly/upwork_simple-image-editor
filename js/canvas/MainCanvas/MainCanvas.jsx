@@ -6,14 +6,14 @@ import AppCanvas from '~/canvas/AppCanvas.jsx';
 
 import { removeRectangle, removeArrow } from '~/MainCanvas/actions.js';
 
-import { TOOL_ERASER } from '~/Toolbar/constants.js';
+import { TOOL_DELETE } from '~/Toolbar/constants.js';
 
 
 class MainCanvas extends Component
 {
 	onShapeClick ( event )
 	{
-		if ( this.props.tool === TOOL_ERASER )
+		if ( this.props.tool === TOOL_DELETE )
 		{
 			this.props.onShapeClick (event.target.attrs);
 		}

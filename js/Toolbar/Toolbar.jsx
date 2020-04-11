@@ -20,7 +20,7 @@ import
 {
 	TOOL_RECTANGLE,
 	TOOL_ARROW,
-	TOOL_ERASER,
+	TOOL_DELETE,
 }
 from '~/Toolbar/constants.js';
 
@@ -63,10 +63,10 @@ class Toolbar extends Component
 
 			<ToolbarButton text='Clear' onClick={props.clear.bind (this)} />
 			<ToolbarButton
-				text='Eraser'
-				misc={{ disabled: props.tool === TOOL_ERASER }}
+				text='Delete Shape'
+				misc={{ disabled: props.tool === TOOL_DELETE }}
 
-				onClick={() => props.setTool (TOOL_ERASER)}
+				onClick={() => props.setTool (TOOL_DELETE)}
 			/>
 
 			<ToolbarButton
