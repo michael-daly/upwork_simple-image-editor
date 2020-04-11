@@ -1,3 +1,8 @@
+const { has } = require ('~/util/has.js');
+
+const { POPUP_OK } = require ('~/Popup/constants.js');
+
+
 const defaultState =
 {
 	canvasWidth:  1440,
@@ -14,8 +19,12 @@ module.exports = ( state = defaultState, action ) =>
 
 	switch ( type )
 	{
-		case 'SET_IMAGE_NUMBER':      return { ...state, imageNumber:      payload };
-		case 'SET_IMAGE_DESCRIPTION': return { ...state, imageDescription: payload };
+		case 'SET_IMAGE_DATA':
+		{
+			const { imageNumber, imageDescription } = payload;
+
+			return { ...state, imageNumber, imageDescription };
+		}
 	}
 
 	return state;
