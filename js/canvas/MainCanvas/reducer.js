@@ -1,17 +1,19 @@
 const { has          } = require ('~/util/has.js');
+const { deepcopy     } = require ('~/util/deepcopy.js');
+const { deepfreeze   } = require ('~/util/deepfreeze.js');
 const { swapUndoRedo } = require ('~/MainCanvas/swapUndoRedo.js');
 
 
-const defaultState =
+const defaultState = deepfreeze (
 {
 	undoStack:  [],
 	redoStack:  [],
 	shapes:     {},
 	shapeIndex: 0,
-};
+});
 
 
-module.exports = ( state = defaultState, action ) =>
+module.exports = ( state = deepcopy (defaultState), action ) =>
 {
 	const { type, payload } = action;
 
@@ -50,6 +52,11 @@ module.exports = ( state = defaultState, action ) =>
 		case 'CLEAR_SHAPES':
 		{
 			return { ...state, shapes: {} };
+		}
+
+		case 'SET_CANVAS_SIZE':
+		{
+			return deepcopy (defaultState);
 		}
 
 		case 'ADD_UNDO_ACTION':

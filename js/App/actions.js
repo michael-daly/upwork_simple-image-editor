@@ -1,12 +1,7 @@
-const setImageNumber = number =>
+const setCanvasSize = ( width, height ) =>
 {
-	return { type: 'SET_IMAGE_NUMBER', payload: number };
-};
-
-const setImageDescription = description =>
-{
-	return { type: 'SET_IMAGE_DESCRIPTION', payload: description };
+	return { type: 'SET_CANVAS_SIZE', payload: { width, height } };
 };
 
 
-export { setImageNumber, setImageDescription };
+export { setCanvasSize };

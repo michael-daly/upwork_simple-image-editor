@@ -1,4 +1,8 @@
-const defaultState =
+const { deepcopy   } = require ('~/util/deepcopy.js');
+const { deepfreeze } = require ('~/util/deepfreeze.js');
+
+
+const defaultState = deepfreeze (
 {
 	isDrawing: false,
 
@@ -7,10 +11,10 @@ const defaultState =
 
 	endX: 0,
 	endY: 0,
-};
+});
 
 
-module.exports = ( state = defaultState, action ) =>
+module.exports = ( state = deepcopy (defaultState), action ) =>
 {
 	const { type, payload } = action;
 
@@ -29,6 +33,11 @@ module.exports = ( state = defaultState, action ) =>
 		case 'SET_DRAW_END':
 		{
 			return { ...state, ...payload };
+		}
+
+		case 'SET_CANVAS_SIZE':
+		{
+			return deepcopy (defaultState);
 		}
 	}
 

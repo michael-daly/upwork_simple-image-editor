@@ -13,23 +13,29 @@ module.exports = store => next => action =>
 
 	const { type, payload } = action;
 
-	if ( type === 'UNDO'  ||  type === 'REDO' )
+	switch ( type )
 	{
-		let actionStack = null;
+		case 'UNDO':
+		case 'REDO':
+		{
+			let actionStack = null;
 
-		if ( type === 'UNDO' )
-		{
-			actionStack = state.mainCanvas.undoStack;
-		}
-		else
-		{
-			actionStack = state.mainCanvas.redoStack;
-		}
+			if ( type === 'UNDO' )
+			{
+				actionStack = state.mainCanvas.undoStack;
+			}
+			else
+			{
+				actionStack = state.mainCanvas.redoStack;
+			}
 
-		// Dispatch the last action from the undo/redo stack, if there's even anything there.
-		if ( actionStack.length > 0 )
-		{
-			store.dispatch (actionStack[actionStack.length - 1]);
+			// Dispatch the last action from the undo/redo stack, if there's even anything there.
+			if ( actionStack.length > 0 )
+			{
+				store.dispatch (actionStack[actionStack.length - 1]);
+			}
+
+			break;
 		}
 	}
 

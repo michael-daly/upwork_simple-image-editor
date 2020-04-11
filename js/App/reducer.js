@@ -5,8 +5,8 @@ const { POPUP_OK } = require ('~/Popup/constants.js');
 
 const defaultState =
 {
-	canvasWidth:  1440,
-	canvasHeight: 810,
+	canvasWidth:  0,
+	canvasHeight: 0,
 
 	imageNumber:      0,
 	imageDescription: '',
@@ -19,6 +19,11 @@ module.exports = ( state = defaultState, action ) =>
 
 	switch ( type )
 	{
+		case 'SET_CANVAS_SIZE':
+		{
+			return { ...state, canvasWidth: payload.width, canvasHeight: payload.height };
+		}
+
 		case 'SET_IMAGE_DATA':
 		{
 			const { imageNumber, imageDescription } = payload;
