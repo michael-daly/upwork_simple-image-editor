@@ -1,4 +1,4 @@
-const { TOOL_RECTANGLE, RECT_FILL } = require ('~/Toolbar/constants.js');
+const { TOOL_RECTANGLE, RECT_FILL, MIN_DRAW_THICKNESS } = require ('~/Toolbar/constants.js');
 
 
 const defaultState =
@@ -21,7 +21,18 @@ module.exports = ( state = defaultState, action ) =>
 		case 'SET_TOOL':           return { ...state, tool:          payload };
 		case 'SET_TOOL_TYPE':      return { ...state, toolType:      payload };
 		case 'SET_DRAW_COLOR':     return { ...state, drawColor:     payload };
-		case 'SET_DRAW_THICKNESS': return { ...state, drawThickness: payload };
+
+		case 'SET_DRAW_THICKNESS':
+		{
+			let drawThickness = payload;
+
+			if ( drawThickness !== ''  &&  drawThickness < MIN_DRAW_THICKNESS )
+			{
+				drawThickness = MIN_DRAW_THICKNESS;
+			}
+
+			return { ...state, drawThickness };
+		}
 
 		case 'SHOW_COLOR_PICKER': return { ...state, showColorPicker: true  };
 		case 'HIDE_COLOR_PICKER': return { ...state, showColorPicker: false };

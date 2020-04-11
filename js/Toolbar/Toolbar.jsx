@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import ToolbarButton      from '~/Toolbar/ToolbarButton.jsx';
+import ToolbarInput       from '~/Toolbar/ToolbarInput.jsx';
 import ToolbarDropdown    from '~/ToolbarDropdown/ToolbarDropdown.jsx';
 import ToolbarColorPicker from '~/Toolbar/ToolbarColorPicker.jsx';
 
@@ -17,6 +18,7 @@ import { POPUP_OK_CANCEL } from '~/Popup/constants.js';
 
 import
 {
+	setDrawThickness,
 	setDrawColor,
 	showColorPicker,
 	hideColorPicker,
@@ -30,6 +32,11 @@ import
 	TOOL_RECTANGLE,
 	TOOL_ARROW,
 	TOOL_DELETE,
+
+	INPUT_TEXTBOX,
+	INPUT_NUMBER,
+	INPUT_INTEGER,
+	INPUT_SIGNED_INT,
 }
 from '~/Toolbar/constants.js';
 
@@ -95,6 +102,13 @@ class Toolbar extends Component
 
 			<ToolbarButton text='Set Draw Color' onClick={props.showColorPicker.bind (this)} />
 
+			<ToolbarInput
+				type={INPUT_SIGNED_INT}
+				label='Draw Thickness:'
+				value={props.drawThickness}
+				setInputValue={props.setDrawThickness.bind (this)}
+			/>
+
 			<ToolbarButton
 				text='Rectangle'
 				misc={{ disabled: props.tool === TOOL_RECTANGLE }}
@@ -128,6 +142,7 @@ const mapStateToProps = ({ toolbar }) =>
 		tool:              toolbar.tool,
 		renderColorPicker: toolbar.showColorPicker,
 		drawColor:         toolbar.drawColor,
+		drawThickness:     toolbar.drawThickness,
 	};
 
 	return props;
@@ -160,6 +175,11 @@ const mapDispatchToProps = dispatch =>
 		redo ()
 		{
 			dispatch (redo ());
+		},
+
+		setDrawThickness ( ...args )
+		{
+			dispatch (setDrawThickness (...args));
 		},
 
 		setDrawColor ( ...args )
