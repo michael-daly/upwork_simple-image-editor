@@ -8,9 +8,19 @@ const setToolType = toolType =>
 	return { type: 'SET_TOOL_TYPE', payload: toolType };
 };
 
+const showColorPicker = () =>
+{
+	return { type: 'SHOW_COLOR_PICKER' };
+};
+
+const hideColorPicker = () =>
+{
+	return { type: 'HIDE_COLOR_PICKER' };
+};
+
 const setDrawColor = color =>
 {
-	return { type: 'SET_DRAW_END', payload: color };
+	return { type: 'SET_DRAW_COLOR', payload: color };
 };
 
 const setDrawThickness = thickness =>
@@ -19,4 +29,4 @@ const setDrawThickness = thickness =>
 };
 
 
-export { setTool, setToolType, setDrawColor, setDrawThickness };
+export { setTool, setToolType, showColorPicker, hideColorPicker, setDrawColor, setDrawThickness };
