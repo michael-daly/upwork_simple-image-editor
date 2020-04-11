@@ -19,7 +19,7 @@ module.exports =
 
 	mode: isProduction ? 'production' : 'development',
 
-	// plugins: [new MinifyPlugin (), new CompressionPlugin ()],
+	plugins: isProduction ? [new MinifyPlugin (), new CompressionPlugin ()] : [],
 
 	module:
 	{
@@ -44,6 +44,8 @@ module.exports =
 			'~/App':             path.resolve (__dirname, './js/App/'),
 			'~/Toolbar':         path.resolve (__dirname, './js/Toolbar/'),
 			'~/ToolbarDropdown': path.resolve (__dirname, './js/Toolbar/dropdown/'),
+			'~/Popup':           path.resolve (__dirname, './js/Popup/'),
+			'~/controls':        path.resolve (__dirname, './js/Popup/controls/'),
 			'~/canvas':          path.resolve (__dirname, './js/canvas/'),
 			'~/shapes':          path.resolve (__dirname, './js/canvas/shapes'),
 			'~/MainCanvas':      path.resolve (__dirname, './js/canvas/MainCanvas/'),

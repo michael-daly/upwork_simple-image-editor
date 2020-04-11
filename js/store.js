@@ -4,20 +4,22 @@ import { combineReducers, createStore, applyMiddleware } from 'redux';
 const reducers = combineReducers (
 {
 	global:     require ('~/App/reducer.js'),
+	toolbar:    require ('~/Toolbar/reducer.js'),
+	popup:      require ('~/Popup/reducer.js'),
 	mainCanvas: require ('~/MainCanvas/reducer.js'),
 	tempCanvas: require ('~/TempCanvas/reducer.js'),
-	toolbar:    require ('~/Toolbar/reducer.js'),
 });
 
 const middleware =
 [
+	require ('~/Popup/middleware.js'),
 	require ('~/MainCanvas/middleware.js'),
 	require ('~/TempCanvas/middleware.js'),
 ];
 
 const createStoreWithMiddleware = applyMiddleware (...middleware) (createStore);
 
-const devTools = process.env.NODE_ENV === 'production' ? null : window.devToolsExtension;
+const devTools = process.env.NODE_ENV === 'production' ? null : window.__REDUX_DEVTOOLS_EXTENSION__;
 const store    = createStoreWithMiddleware (reducers, devTools  &&  devTools ());
 
 store.subscribe (() =>

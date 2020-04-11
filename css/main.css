@@ -1,5 +1,38 @@
 html, body
 {
 	background-color: #011627;
-	color: white;
+	color:            white;
+	overflow:         hidden;
+}
+
+.image-editor-popup
+{
+	position: absolute;
+
+	z-index:  999;
+	left:     0px;
+	top:      0px;
+
+	height: 100%;
+	width:  100%;
+
+	color:;
+}
+
+.image-editor-popup-overlay
+{
+	height: 100%;
+	width:  100%;
+
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.image-editor-popup-window
+{
+	height: 30%;
+	width:  30%;
+
+	padding: 1%;
+
+	background-color: #011E33;
 }

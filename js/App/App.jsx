@@ -4,11 +4,11 @@ import { Stage   } from 'react-konva/lib/ReactKonvaCore';
 import { connect } from 'react-redux';
 
 import Toolbar    from '~/Toolbar/Toolbar.jsx';
+import Popup      from '~/Popup/Popup.jsx';
 import MainCanvas from '~/MainCanvas/MainCanvas.jsx';
 import TempCanvas from '~/TempCanvas/TempCanvas.jsx';
 
 import { startDrawing, stopDrawing, setDrawEnd } from '~/TempCanvas/actions.js';
-
 
 // ------------------------------------------------
 
@@ -91,6 +91,7 @@ class App extends Component
 		const app =
 		(
 			<div>
+				{props.showPopup ? <Popup /> : ''}
 				<Toolbar />
 				<Stage
 					ref='drawingArea'
@@ -111,12 +112,14 @@ class App extends Component
 }
 
 
-const mapStateToProps = ({ global, tempCanvas }) =>
+const mapStateToProps = ({ global, popup, tempCanvas }) =>
 {
 	const props =
 	{
 		canvasWidth:  global.canvasWidth,
 		canvasHeight: global.canvasHeight,
+
+		showPopup: popup.showPopup,
 
 		isDrawing: tempCanvas.isDrawing,
 	};
