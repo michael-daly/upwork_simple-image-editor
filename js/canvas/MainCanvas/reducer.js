@@ -6,6 +6,7 @@ const { swapUndoRedo } = require ('~/MainCanvas/swapUndoRedo.js');
 
 const defaultState = deepfreeze (
 {
+	imageURL:   '',
 	undoStack:  [],
 	redoStack:  [],
 	shapes:     {},
@@ -19,6 +20,11 @@ module.exports = ( state = deepcopy (defaultState), action ) =>
 
 	switch ( type )
 	{
+		case 'SET_IMAGE_URL':
+		{
+			return { ...state, ...deepcopy (defaultState), imageURL: payload };
+		}
+
 		case 'ADD_ARROW':
 		case 'ADD_RECTANGLE':
 		{

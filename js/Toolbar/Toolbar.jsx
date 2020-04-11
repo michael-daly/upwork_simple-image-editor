@@ -8,10 +8,11 @@ import ToolbarDropdown from '~/ToolbarDropdown/ToolbarDropdown.jsx';
 import { rectangleOptions } from '~/ToolbarDropdown/rectangle.js';
 import { showPopup        } from '~/Popup/actions.js';
 import { editImageMenu    } from '~/Popup/popupMenus.js';
+import { setCanvasSize    } from '~/App/actions.js';
 
 import { setTool, setToolType } from '~/Toolbar/actions.js';
 
-import { clearShapes, undo, redo } from '~/MainCanvas/actions.js';
+import { setImageURL, clearShapes, undo, redo } from '~/MainCanvas/actions.js';
 
 import { POPUP_OK_CANCEL } from '~/Popup/constants.js';
 
@@ -26,6 +27,20 @@ from '~/Toolbar/constants.js';
 
 class Toolbar extends Component
 {
+	onImageUploaded ( file )
+	{
+		const { props } = this;
+
+		const tempImage = new Image ();
+
+		tempImage.src    = file.target.result;
+		tempImage.onload = function ()
+		{
+			props.setCanvasSize (tempImage.width, tempImage.height);
+			props.setImageURL (file.target.result);
+		};
+	}
+
 	clickEditButton ()
 	{
 		this.props.showPopup (editImageMenu);
@@ -36,6 +51,12 @@ class Toolbar extends Component
 		const { props } = this;
 
 		return <div>
+			<ToolbarButton
+				type='file'
+				text='Upload Image'
+				onUpload={this.onImageUploaded.bind (this)}
+			/>
+
 			<ToolbarButton text='Edit'  onClick={this.clickEditButton.bind (this)} />
 			<ToolbarButton text='Undo'  onClick={props.undo.bind (this)} />
 			<ToolbarButton text='Redo'  onClick={props.redo.bind (this)} />
@@ -88,6 +109,16 @@ const mapDispatchToProps = dispatch =>
 {
 	const props =
 	{
+		setCanvasSize ( ...args )
+		{
+			dispatch (setCanvasSize (...args));
+		},
+
+		setImageURL ( ...args )
+		{
+			dispatch (setImageURL (...args));
+		},
+
 		clear ()
 		{
 			dispatch (clearShapes ());

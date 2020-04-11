@@ -3,6 +3,11 @@ import { deepcopy } from '~/util/deepcopy.js';
 import { drawDataToRectangle, drawDataToArrow } from '~/TempCanvas/drawDataToObject.js';
 
 
+const setImageURL = url =>
+{
+	return { type: 'SET_IMAGE_URL', payload: url };
+};
+
 const addRectangle = drawData =>
 {
 	const action =
@@ -81,4 +86,19 @@ const redo = () =>
 };
 
 
-export { addRectangle, removeRectangle, addArrow, removeArrow, clearShapes, addUndoAction, undo, redo };
+export
+{
+	setImageURL,
+
+	addRectangle,
+	removeRectangle,
+
+	addArrow,
+	removeArrow,
+
+	clearShapes,
+
+	addUndoAction,
+	undo,
+	redo
+};

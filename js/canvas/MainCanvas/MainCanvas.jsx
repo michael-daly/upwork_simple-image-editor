@@ -18,10 +18,12 @@ class MainCanvas extends Component
 			this.props.onShapeClick (event.target.attrs);
 		}
 	}
+
 	render ()
 	{
 		return <AppCanvas
 			name='mainCanvas'
+			imageURL={this.props.imageURL}
 			shapes={this.props.shapes}
 			onShapeClick={this.onShapeClick.bind (this)}
 		/>;
@@ -33,8 +35,9 @@ const mapStateToProps = ({ toolbar, mainCanvas }) =>
 {
 	const props =
 	{
-		shapes: mainCanvas.shapes,
-		tool:   toolbar.tool,
+		imageURL: mainCanvas.imageURL,
+		shapes:   mainCanvas.shapes,
+		tool:     toolbar.tool,
 	};
 
 	return props;

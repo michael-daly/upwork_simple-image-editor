@@ -5,14 +5,15 @@ import 'konva/lib/shapes/Arrow';
 
 import { Layer, Rect, Arrow } from 'react-konva/lib/ReactKonvaCore';
 
-import RectangleShape from '~/shapes/RectangleShape.jsx';
+import BackgroundImage from '~/canvas/BackgroundImage.jsx';
+import RectangleShape  from '~/shapes/RectangleShape.jsx';
 
 
 class AppCanvas extends Component
 {
 	render ()
 	{
-		const { name, shapes } = this.props;
+		const { name, shapes, imageURL = null } = this.props;
 
 		let { onShapeClick } = this.props;
 
@@ -24,7 +25,9 @@ class AppCanvas extends Component
 		const layer =
 		(
 			<Layer>
+				<BackgroundImage imageURL={imageURL} />
 			{
+
 				Object.keys (shapes).map (( key, index ) =>
 				{
 					const shape = shapes[key];

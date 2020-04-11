@@ -101,8 +101,8 @@ class App extends Component
 
 					onMouseDown={this.onCanvasMouseDown.bind (this)}
 				>
-					<TempCanvas store={props.store} />
 					<MainCanvas store={props.store} />
+					<TempCanvas store={props.store} />
 				</Stage>
 			</div>
 		);
