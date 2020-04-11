@@ -2,7 +2,6 @@ html, body
 {
 	background-color: #011627;
 	color:            white;
-	overflow:         hidden;
 }
 
 .image-editor-popup
