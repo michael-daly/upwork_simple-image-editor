@@ -5,7 +5,7 @@ const isArray = value =>
 
 const isObject = value => 
 {
-	return typeof value === 'object'  &&  !Array.isArray (value);
+	return typeof value === 'object'  &&  !Array.isArray (value)  &&  !(value instanceof RegExp);
 };
 
 const isString = value =>
@@ -23,10 +23,15 @@ const isInteger = value =>
 	return isNumber (value)  &&  Number.isInteger (value);
 };
 
+const isUndefined = value =>
+{
+	return typeof value === 'undefined';
+};
+
 const isNothing = value =>
 {
 	return typeof value === 'undefined'  ||  value === null;
 };
 
 
-export { isArray, isObject, isString, isNumber, isInteger, isNothing };
+export { isArray, isObject, isString, isNumber, isInteger, isUndefined, isNothing };
