@@ -1,16 +1,9 @@
 import React, { Component, Fragment } from 'react';
 
-import
-{
-	INPUT_TEXTBOX,
-	INPUT_NUMBER,
-	INPUT_INTEGER,
-	INPUT_SIGNED_INT,
-}
-from '~/Toolbar/constants.js';
+import { GUI_TEXTBOX, GUI_NUMBER, GUI_INTEGER, GUI_SIGNED_INT } from '~/controls/constants.js';
 
 
-class ToolbarInput extends Component
+class InputControl extends Component
 {
 	setValue ( event )
 	{
@@ -19,7 +12,15 @@ class ToolbarInput extends Component
 		let value = event.target.value;
 		let regex = null;
 
-		if ( type === INPUT_SIGNED_INT )
+		if ( type === GUI_NUMBER )
+		{
+			regex = /[^0-9\-.]/g;
+		}
+		else if ( type === GUI_INTEGER )
+		{
+			regex = /[^0-9\-]/g;
+		}
+		else if ( type === GUI_SIGNED_INT )
 		{
 			regex = /[^0-9]/g;
 		}
@@ -37,19 +38,25 @@ class ToolbarInput extends Component
 			}
 		}
 
-		this.props.setInputValue (value);
+		this.props.setValue (value);
 	}
 
 	render ()
 	{
-		const { label, value } = this.props;
+		const { value } = this.props;
+		const { label } = this.props.controlData;
 
-		return <Fragment>
-			<label>{label}</label>
-			<input type='textbox' value={value} onChange={this.setValue.bind (this)} />
-		</Fragment>;
+		const control =
+		(
+			<Fragment>
+				<label>{label}</label>
+				<input type='textbox' value={value} onChange={this.setValue.bind (this)} />
+			</Fragment>
+		);
+
+		return control;
 	}
 };
 
 
-export default ToolbarInput;
+export default InputControl;

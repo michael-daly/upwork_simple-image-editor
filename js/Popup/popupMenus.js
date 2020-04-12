@@ -1,6 +1,8 @@
 import { deepfreeze } from '~/util/deepfreeze.js';
 
-import { POPUP_OK_CANCEL, GUI_TEXTBOX, GUI_NUMBER, GUI_INTEGER } from '~/Popup/constants.js';
+import { POPUP_OK_CANCEL } from '~/Popup/constants.js';
+
+import { GUI_TEXTBOX, GUI_NUMBER, GUI_INTEGER } from '~/controls/constants.js';
 
 
 const editImageMenu = deepfreeze (

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import PopupInputCtrl from '~/controls/PopupInputCtrl.jsx';
+import InputControl from '~/controls/InputControl.jsx';
 
 import { hidePopup } from '~/Popup/actions.js';
 
@@ -87,7 +87,9 @@ class Popup extends Component
 			/>;
 		}
 
-		const popup =
+		const popup = this;
+
+		const popupComponent =
 		(
 			<div className='image-editor-popup'>
 				<div className='image-editor-popup-overlay'>
@@ -100,13 +102,13 @@ class Popup extends Component
 								const value = emptyValues ? data.value : controlValues[index];
 								const type  = data.type;
 
-								return <PopupInputCtrl
+								return <InputControl
 									key={`popup-${type}-${index}`}
 									type={type}
 									index={index}
 									value={value}
 									controlData={data}
-									setControlValue={this.setControlValue.bind (this)}
+									setValue={newValue => popup.setControlValue (index, newValue)}
 								/>;
 							})
 						}
@@ -120,7 +122,7 @@ class Popup extends Component
 			</div>
 		);
 
-		return popup;
+		return popupComponent;
 	}
 }
 

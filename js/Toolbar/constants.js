@@ -5,11 +5,6 @@ const TOOL_DELETE    = 'TOOL_DELETE';
 const RECT_FILL    = 'RECT_FILL';
 const RECT_OUTLINE = 'RECT_OUTLINE';
 
-const INPUT_TEXTBOX    = 0;
-const INPUT_NUMBER     = 1;
-const INPUT_INTEGER    = 2;
-const INPUT_SIGNED_INT = 3;
-
 const MIN_DRAW_THICKNESS = 1;
 
 
@@ -21,11 +16,6 @@ module.exports =
 
 	RECT_FILL,
 	RECT_OUTLINE,
-
-	INPUT_TEXTBOX,
-	INPUT_NUMBER,
-	INPUT_INTEGER,
-	INPUT_SIGNED_INT,
 
 	MIN_DRAW_THICKNESS,
 };

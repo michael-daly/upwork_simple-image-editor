@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import ToolbarButton      from '~/Toolbar/ToolbarButton.jsx';
-import ToolbarInput       from '~/Toolbar/ToolbarInput.jsx';
 import ToolbarDropdown    from '~/ToolbarDropdown/ToolbarDropdown.jsx';
 import ToolbarColorPicker from '~/Toolbar/ToolbarColorPicker.jsx';
+import InputControl       from '~/controls/InputControl.jsx';
 
 import { rectangleOptions } from '~/ToolbarDropdown/rectangle.js';
 import { showPopup        } from '~/Popup/actions.js';
@@ -15,6 +15,7 @@ import { setCanvasSize    } from '~/App/actions.js';
 import { setImageURL, clearShapes, undo, redo } from '~/MainCanvas/actions.js';
 
 import { POPUP_OK_CANCEL } from '~/Popup/constants.js';
+import { GUI_SIGNED_INT  } from '~/controls/constants.js';
 
 import
 {
@@ -32,11 +33,6 @@ import
 	TOOL_RECTANGLE,
 	TOOL_ARROW,
 	TOOL_DELETE,
-
-	INPUT_TEXTBOX,
-	INPUT_NUMBER,
-	INPUT_INTEGER,
-	INPUT_SIGNED_INT,
 }
 from '~/Toolbar/constants.js';
 
@@ -102,11 +98,11 @@ class Toolbar extends Component
 
 			<ToolbarButton text='Set Draw Color' onClick={props.showColorPicker.bind (this)} />
 
-			<ToolbarInput
-				type={INPUT_SIGNED_INT}
-				label='Draw Thickness:'
+			<InputControl
+				type={GUI_SIGNED_INT}
 				value={props.drawThickness}
-				setInputValue={props.setDrawThickness.bind (this)}
+				controlData={{ label: 'Draw Thickness:' }}
+				setValue={props.setDrawThickness.bind (this)}
 			/>
 
 			<ToolbarButton

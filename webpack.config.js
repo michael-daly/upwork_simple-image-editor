@@ -45,7 +45,7 @@ module.exports =
 			'~/Toolbar':         path.resolve (__dirname, './js/Toolbar/'),
 			'~/ToolbarDropdown': path.resolve (__dirname, './js/Toolbar/dropdown/'),
 			'~/Popup':           path.resolve (__dirname, './js/Popup/'),
-			'~/controls':        path.resolve (__dirname, './js/Popup/controls/'),
+			'~/controls':        path.resolve (__dirname, './js/controls/'),
 			'~/canvas':          path.resolve (__dirname, './js/canvas/'),
 			'~/shapes':          path.resolve (__dirname, './js/canvas/shapes'),
 			'~/MainCanvas':      path.resolve (__dirname, './js/canvas/MainCanvas/'),
