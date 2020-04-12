@@ -51,6 +51,7 @@ module.exports =
 			'~/MainCanvas':      path.resolve (__dirname, './js/canvas/MainCanvas/'),
 			'~/TempCanvas':      path.resolve (__dirname, './js/canvas/TempCanvas/'),
 			'~/util':            path.resolve (__dirname, './js/util/'),
+			'~/misc':            path.resolve (__dirname, './js/misc/'),
 			'~':                 path.resolve (__dirname, './js/'),
 		}
 	},

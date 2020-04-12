@@ -7,10 +7,11 @@ import ToolbarDropdown    from '~/ToolbarDropdown/ToolbarDropdown.jsx';
 import ToolbarColorPicker from '~/Toolbar/ToolbarColorPicker.jsx';
 import InputControl       from '~/controls/InputControl.jsx';
 
-import { rectangleOptions } from '~/ToolbarDropdown/rectangle.js';
-import { showPopup        } from '~/Popup/actions.js';
-import { editImageMenu    } from '~/Popup/popupMenus.js';
-import { setCanvasSize    } from '~/App/actions.js';
+import { rectangleOptions   } from '~/ToolbarDropdown/rectangle.js';
+import { showPopup          } from '~/Popup/actions.js';
+import { editImageMenu      } from '~/Popup/popupMenus.js';
+import { setCanvasSize      } from '~/App/actions.js';
+import { serializeShapeData } from '~/misc/serializeShapeData.js';
 
 import { setImageURL, clearShapes, undo, redo } from '~/MainCanvas/actions.js';
 
@@ -53,15 +54,23 @@ class Toolbar extends Component
 		};
 	}
 
-	setDrawColor ( color )
+	clickSendButton ()
 	{
-		this.props.setDrawColor (color);
-		this.props.hideColorPicker ();
+		const serialized = serializeShapeData (this.props.global, this.props.mainCanvas);
+
+		// REPLACEME: Replace with something to send this data to a server!
+		prompt ('This is the data that will have been sent:', JSON.stringify (serialized));
 	}
 
 	clickEditButton ()
 	{
 		this.props.showPopup (editImageMenu);
+	}
+
+	setDrawColor ( color )
+	{
+		this.props.setDrawColor (color);
+		this.props.hideColorPicker ();
 	}
 
 	render ()
@@ -83,6 +92,8 @@ class Toolbar extends Component
 				text='Upload Image'
 				onUpload={this.onImageUploaded.bind (this)}
 			/>
+
+			<ToolbarButton text='Send' onClick={this.clickSendButton.bind (this)} />
 
 			<ToolbarButton text='Edit' onClick={this.clickEditButton.bind (this)} />
 			<ToolbarButton text='Undo' onClick={props.undo.bind (this)} />
@@ -131,14 +142,19 @@ class Toolbar extends Component
 }
 
 
-const mapStateToProps = ({ toolbar }) =>
+const mapStateToProps = state =>
 {
+	const { toolbar } = state;
+
 	const props =
 	{
 		tool:              toolbar.tool,
 		renderColorPicker: toolbar.showColorPicker,
 		drawColor:         toolbar.drawColor,
 		drawThickness:     toolbar.drawThickness,
+
+		global:     state.global,
+		mainCanvas: state.mainCanvas,
 	};
 
 	return props;
