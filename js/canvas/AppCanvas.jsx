@@ -13,14 +13,7 @@ class AppCanvas extends Component
 {
 	render ()
 	{
-		const { name, shapes, imageURL = null } = this.props;
-
-		let { onShapeClick } = this.props;
-
-		if ( onShapeClick === null )
-		{
-			onShapeClick = function () {};
-		}
+		const { name, shapes, imageURL = null, onShapeClick = () => {} } = this.props;
 
 		const layer =
 		(

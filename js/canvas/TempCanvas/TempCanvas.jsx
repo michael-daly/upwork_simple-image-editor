@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 import AppCanvas from '~/canvas/AppCanvas.jsx';
 
-import { getDrawDataFromState                 } from '~/TempCanvas/getDrawDataFromState.js';
+import { getDrawDataFromState } from '~/TempCanvas/getDrawDataFromState.js';
+
 import { drawDataToRectangle, drawDataToArrow } from '~/TempCanvas/drawDataToObject.js';
 
 import { TOOL_RECTANGLE, TOOL_ARROW } from '~/Toolbar/constants.js';
