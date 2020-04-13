@@ -36,6 +36,7 @@ import
 	TOOL_DELETE,
 	RECT_FILL,
 	RECT_OUTLINE,
+	MAX_DRAW_THICKNESS,
 }
 from '~/Toolbar/constants.js';
 
@@ -79,6 +80,13 @@ class Toolbar extends Component
 	{
 		const { props } = this;
 
+		const controlData =
+		{
+			label:     'Draw Thickness:',
+			width:     '2vw',
+			maxLength: MAX_DRAW_THICKNESS.toString ().length,
+		};
+
 		return <div>
 			{
 				props.renderColorPicker ?
@@ -116,7 +124,7 @@ class Toolbar extends Component
 				<InputControl
 					type={GUI_SIGNED_INT}
 					value={props.drawThickness}
-					controlData={{ label: 'Draw Thickness:' }}
+					controlData={controlData}
 					setValue={props.setDrawThickness.bind (this)}
 				/>
 

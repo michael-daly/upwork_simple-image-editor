@@ -16,7 +16,9 @@ const editImageMenu = deepfreeze (
 		{
 			type:         GUI_INTEGER,
 			label:        'Image Number:',
+			width:        '5vw',
 			value:        0,
+			maxLength:    12,
 			stateField:   'imageNumber',
 			stateReducer: 'global',
 		},
@@ -24,7 +26,9 @@ const editImageMenu = deepfreeze (
 		{
 			type:         GUI_TEXTBOX,
 			label:        'Image Description:',
+			width:        '18vw',
 			value:        '',
+			maxLength:    300,
 			stateField:   'imageDescription',
 			stateReducer: 'global',
 		},

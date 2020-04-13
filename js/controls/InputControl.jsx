@@ -1,6 +1,16 @@
 import React, { Component, Fragment } from 'react';
 
-import { GUI_TEXTBOX, GUI_NUMBER, GUI_INTEGER, GUI_SIGNED_INT } from '~/controls/constants.js';
+import
+{
+	GUI_DEFAULT_MAX_LEN,
+	GUI_DEFAULT_WIDTH,
+
+	GUI_TEXTBOX,
+	GUI_NUMBER,
+	GUI_INTEGER,
+	GUI_SIGNED_INT,
+}
+from '~/controls/constants.js';
 
 
 class InputControl extends Component
@@ -43,18 +53,29 @@ class InputControl extends Component
 
 	render ()
 	{
-		const { value } = this.props;
-		const { label } = this.props.controlData;
+		const { props } = this;
+		const { value } = props;
+
+		const
+		{
+			label,
+			maxLength = GUI_DEFAULT_MAX_LEN,
+			width     = GUI_DEFAULT_WIDTH,
+		}
+		= props.controlData;
 
 		const control =
 		(
 			<span className='image-editor-input-control'>
 				<label className='image-editor-textbox-label'>{label}</label>
 				<input
+					style={{ width }}
 					className='image-editor-textbox-input'
 					type='textbox'
 					value={value}
+					maxLength={maxLength}
 					onChange={this.setValue.bind (this)}
+
 				/>
 			</span>
 		);
