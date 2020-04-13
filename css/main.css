@@ -53,7 +53,7 @@ html, body
 
 .image-editor-toolbar-button:hover
 {
-	background-color: rgba(255, 255, 255, 0.1);
+	background-color: rgba(255, 255, 255, 0.05);
 }
 
 .image-editor-toolbar-button:active
