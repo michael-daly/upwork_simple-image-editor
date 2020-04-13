@@ -6,7 +6,7 @@ const iconSet = require ('~/icons.js');
 
 const ToolbarIcon = ({ ...props }) =>
 {
-	return <IcoMoon iconSet={iconSet} {...props} />;
+	return <IcoMoon className='image-editor-toolbar-button-icon' iconSet={iconSet} {...props} />;
 };
  
 

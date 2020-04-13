@@ -27,10 +27,14 @@ class ToolbarButton extends Component
 			type,
 			icon,
 
-			iconSize = '1%',
-			misc     = {},
-			onClick  = () => {},
-			onUpload = () => {},
+			className = '',
+			iconSize  = '1%',
+			misc      = {},
+
+			onClick   = () => {},
+			onUpload  = () => {},
+
+			children  = [],
 		}
 		= this.props;
 
@@ -43,7 +47,12 @@ class ToolbarButton extends Component
 			/>;
 		}
 
-		return <span className='image-editor-toolbar-button' onClick={onClick}>
+		return <span
+			{...misc}
+			className={`image-editor-toolbar-button ${className}`}
+			onClick={onClick}
+		>
+			{children}
 			<ToolbarIcon icon={icon} size={iconSize} />
 		</span>;
 	}

@@ -1,18 +1,19 @@
-import React from 'react';
+import React    from 'react';
+import Dropdown from 'react-dropdown';
 
 
 const ToolbarDropdown = ( props ) =>
 {
 	const { name, list, onSelect, misc = {} } = props;
 
-	return <select {...misc} onChange={onSelect}>
-	{
-		list.map (({ value, text }, index ) =>
-		{
-			return <option key={`dropdown-${name}-${index}`}value={value}>{text}</option>;
-		})
-	}
-	</select>;
+	return <Dropdown
+		{...misc}
+		className='image-editor-toolbar-dropdown'
+		menuClassName='image-editor-toolbar-dropdown-menu'
+		placeholder='&#9660;'
+		options={list}
+		onChange={onSelect}
+	/>;
 };
 
 

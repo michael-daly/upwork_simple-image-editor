@@ -7,7 +7,7 @@ import ToolbarDropdown    from '~/ToolbarDropdown/ToolbarDropdown.jsx';
 import ToolbarColorPicker from '~/Toolbar/ToolbarColorPicker.jsx';
 import InputControl       from '~/controls/InputControl.jsx';
 
-import { rectangleOptions   } from '~/ToolbarDropdown/rectangle.js';
+import { rectangleOptions   } from '~/ToolbarDropdown/rectangleOptions.js';
 import { showPopup          } from '~/Popup/actions.js';
 import { editImageMenu      } from '~/Popup/popupMenus.js';
 import { setCanvasSize      } from '~/App/actions.js';
@@ -107,7 +107,6 @@ class Toolbar extends Component
 				<ToolbarButton
 					icon='eraser'
 					iconSize='1.25%'
-					misc={{ disabled: props.tool === TOOL_DELETE }}
 
 					onClick={() => props.setTool (TOOL_DELETE)}
 				/>
@@ -122,24 +121,20 @@ class Toolbar extends Component
 				/>
 
 				<ToolbarButton
+					className='image-editor-toolbar-button-combo'
 					icon={props.toolType === RECT_FILL ? 'stop2' : 'checkbox-unchecked'}
-					misc={{ disabled: props.tool === TOOL_RECTANGLE }}
-
 					onClick={() => props.setTool (TOOL_RECTANGLE)}
-				/>
-				<ToolbarDropdown
-					name='rectangleOptions'
-					list={rectangleOptions}
+				>
+					<ToolbarDropdown
+						name='rectangleOptions'
+						list={rectangleOptions}
 
-					misc={{ disabled: props.tool !== TOOL_RECTANGLE }}
-
-					onSelect={event => props.setToolType (event.target.value)}
-				/>
+						onSelect={event => props.setToolType (event.value)}
+					/>
+				</ToolbarButton>
 
 				<ToolbarButton
 					icon='arrow-up-right'
-					misc={{ disabled: props.tool === TOOL_ARROW }}
-
 					onClick={() => props.setTool (TOOL_ARROW)}
 				/>
 			</div>
