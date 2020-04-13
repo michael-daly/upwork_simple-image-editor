@@ -82,7 +82,7 @@ class Toolbar extends Component
 
 		const controlData =
 		{
-			label:     'Draw Thickness:',
+			label:     'Line Thickness:',
 			width:     '2vw',
 			maxLength: MAX_DRAW_THICKNESS.toString ().length,
 		};
