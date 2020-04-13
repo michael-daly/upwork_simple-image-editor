@@ -34,6 +34,8 @@ import
 	TOOL_RECTANGLE,
 	TOOL_ARROW,
 	TOOL_DELETE,
+	RECT_FILL,
+	RECT_OUTLINE,
 }
 from '~/Toolbar/constants.js';
 
@@ -118,7 +120,7 @@ class Toolbar extends Component
 			/>
 
 			<ToolbarButton
-				icon='checkbox-unchecked'
+				icon={props.toolType === RECT_FILL ? 'stop2' : 'checkbox-unchecked'}
 				misc={{ disabled: props.tool === TOOL_RECTANGLE }}
 
 				onClick={() => props.setTool (TOOL_RECTANGLE)}
@@ -150,6 +152,7 @@ const mapStateToProps = state =>
 	const props =
 	{
 		tool:              toolbar.tool,
+		toolType:          toolbar.toolType,
 		renderColorPicker: toolbar.showColorPicker,
 		drawColor:         toolbar.drawColor,
 		drawThickness:     toolbar.drawThickness,
