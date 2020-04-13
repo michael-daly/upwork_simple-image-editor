@@ -102,9 +102,11 @@ class Popup extends Component
 								const value = emptyValues ? data.value : controlValues[index];
 								const type  = data.type;
 
-								return <div className='image-editor-control-container'>
+								return <div
+									key={`popup-${type}-${index}`}
+									className='image-editor-control-container'
+								>
 									<InputControl
-										key={`popup-${type}-${index}`}
 										type={type}
 										index={index}
 										value={value}
