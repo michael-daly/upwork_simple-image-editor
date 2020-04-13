@@ -126,6 +126,7 @@ class Toolbar extends Component
 					onClick={() => props.setTool (TOOL_RECTANGLE)}
 				>
 					<ToolbarDropdown
+						className='image-editor-toolbar-dropdown-combo'
 						name='rectangleOptions'
 						list={rectangleOptions}
 

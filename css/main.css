@@ -58,13 +58,18 @@ html, body
 	display: inline-block;
 	cursor:  pointer;
 
-	margin-left:  1%;
+	margin-left:  0.2%;
 	margin-right: 0.2%;
 
 	padding-left:  0.2%;
 	padding-right: 0.2%;
 
 	font-size: 75%;
+}
+
+.image-editor-toolbar-dropdown-combo
+{
+	margin-left:  0.5%;
 }
 
 .image-editor-toolbar-dropdown:hover
