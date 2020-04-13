@@ -99,8 +99,9 @@ class Toolbar extends Component
 
 			<div className='image-editor-toolbar'>
 				<ToolbarButton
+					id='upload-image'
 					type='file'
-					icon='email'
+					icon='folder-open'
 					onUpload={this.onImageUploaded.bind (this)}
 				/>
 

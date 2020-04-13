@@ -17,7 +17,10 @@ html, body
 	left:     0px;
 	right:    0px;
 	top:      0px;
-	padding:  0.48%;
+
+	padding:       0.48%;
+	padding-left:  0px;
+	padding-right: 0px;
 
 	overflow: hidden;
 

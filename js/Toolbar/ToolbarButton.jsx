@@ -27,6 +27,7 @@ class ToolbarButton extends Component
 			type,
 			icon,
 
+			id        = '',
 			className = '',
 			iconSize  = '1%',
 			misc      = {},
@@ -38,23 +39,46 @@ class ToolbarButton extends Component
 		}
 		= this.props;
 
+		let button = '';
+
 		if ( type === 'file' )
 		{
-			return <input
-				{...misc}
-				type='file'
-				onChange={this.onFileUploaded.bind (this)}
-			/>;
+			button =
+			(
+				<label
+					{...misc}
+					htmlFor={id}
+					className={`image-editor-toolbar-button ${className}`}
+					onClick={onClick}
+				>
+					{children}
+					<ToolbarIcon icon={icon} size={iconSize} />
+					<input
+						id={id}
+						type='file'
+						style={{ display: 'none' }}
+						onChange={this.onFileUploaded.bind (this)}
+					/>
+				</label>
+			);
+		}
+		else
+		{
+			button =
+			(
+				<span
+					{...misc}
+					id={id}
+					className={`image-editor-toolbar-button ${className}`}
+					onClick={onClick}
+				>
+					{children}
+					<ToolbarIcon icon={icon} size={iconSize} />
+				</span>
+			);
 		}
 
-		return <span
-			{...misc}
-			className={`image-editor-toolbar-button ${className}`}
-			onClick={onClick}
-		>
-			{children}
-			<ToolbarIcon icon={icon} size={iconSize} />
-		</span>;
+		return button;
 	}
 };
 

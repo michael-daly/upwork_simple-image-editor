@@ -1,9 +1,9 @@
 module.exports = {
   "selection": [
     {
-      "ligatures": "file-picture, file5",
-      "name": "file-picture",
-      "order": 22,
+      "ligatures": "folder-open, directory2",
+      "name": "folder-open",
+      "order": 25,
       "prevSize": 32
     },
     {
@@ -80,7 +80,7 @@ module.exports = {
   ],
   "metadata": {
     "name": "Simple Image Editor Toolbar",
-    "iconsHash": 1131745331
+    "iconsHash": 1555254811
   },
   "height": 1024,
   "prevSize": 32,
@@ -88,22 +88,20 @@ module.exports = {
     {
       "icon": {
         "paths": [
-          "M832 896h-640v-128l192-320 263 320 185-128v256z",
-          "M832 480c0 53.020-42.98 96-96 96-53.022 0-96-42.98-96-96s42.978-96 96-96c53.020 0 96 42.98 96 96z",
-          "M917.806 229.076c-22.212-30.292-53.174-65.7-87.178-99.704s-69.412-64.964-99.704-87.178c-51.574-37.82-76.592-42.194-90.924-42.194h-496c-44.112 0-80 35.888-80 80v864c0 44.112 35.888 80 80 80h736c44.112 0 80-35.888 80-80v-624c0-14.332-4.372-39.35-42.194-90.924zM785.374 174.626c30.7 30.7 54.8 58.398 72.58 81.374h-153.954v-153.946c22.984 17.78 50.678 41.878 81.374 72.572zM896 944c0 8.672-7.328 16-16 16h-736c-8.672 0-16-7.328-16-16v-864c0-8.672 7.328-16 16-16 0 0 495.956-0.002 496 0v224c0 17.672 14.326 32 32 32h224v624z"
+          "M832 960l192-512h-832l-192 512zM128 384l-128 576v-832h288l128 128h416v128z"
         ],
         "tags": [
-          "file-picture",
-          "file",
-          "document",
-          "file-image"
+          "folder-open",
+          "directory",
+          "category",
+          "browse"
         ],
-        "defaultCode": 59687,
+        "defaultCode": 59696,
         "grid": 16,
         "attrs": {}
       },
       "properties": {
-        "name": "file-picture"
+        "name": "folder-open"
       }
     },
     {
@@ -212,6 +210,7 @@ module.exports = {
           "eraser"
         ],
         "grid": 14,
+        "defaultCode": 59648,
         "attrs": {}
       },
       "properties": {
