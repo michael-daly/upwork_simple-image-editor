@@ -114,7 +114,7 @@ class Toolbar extends Component
 
 				<ToolbarButton
 					icon='eraser'
-					iconSize='1.25%'
+					iconSize='1.2%'
 
 					onClick={() => props.setTool (TOOL_DELETE)}
 				/>
