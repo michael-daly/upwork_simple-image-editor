@@ -22,8 +22,6 @@ html, body
 	padding-left:  0px;
 	padding-right: 0px;
 
-	overflow: hidden;
-
 	position: fixed;
 	z-index:  995;
 
