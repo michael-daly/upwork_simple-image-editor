@@ -237,7 +237,7 @@ html, body
 	width: 100%;
 }
 
-.image-editor-popup-button
+.image-editor-popup-button, .image-editor-popup-button-accept
 {
 	background: transparent;
 	cursor:     pointer;

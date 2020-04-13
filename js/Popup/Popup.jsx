@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
+import Window       from '~/Popup/Window.jsx';
 import InputControl from '~/controls/InputControl.jsx';
 
 import { hidePopup } from '~/Popup/actions.js';
-
-import { POPUP_OK_CANCEL } from '~/Popup/constants.js';
 
 
 class Popup extends Component
@@ -75,64 +74,36 @@ class Popup extends Component
 		const { controls      } = props;
 
 		const emptyValues = controlValues.length <= 0;
+		const popup       = this;
 
-		let cancelButton = '';
-
-		if ( props.popupType === POPUP_OK_CANCEL )
+		const controlComponents = controls.map (( data, index ) =>
 		{
-			cancelButton =
+			const value = emptyValues ? data.value : controlValues[index];
+			const type  = data.type;
+
+			const ctrl =
 			(
-				<span className='image-editor-popup-button' onClick={this.clickCancel.bind (this)}>
-					Cancel
-				</span>
-			);
-		}
-
-		const popup = this;
-
-		const popupComponent =
-		(
-			<div className='image-editor-popup'>
-				<div className='image-editor-popup-overlay'>
-					<div className='image-editor-popup-window'>
-						<h3 className='image-editor-popup-title'>{props.title}</h3>
-						<div className='image-editor-popup-controls'>
-						{
-							controls.map (( data, index ) =>
-							{
-								const value = emptyValues ? data.value : controlValues[index];
-								const type  = data.type;
-
-								return <div
-									key={`popup-${type}-${index}`}
-									className='image-editor-control-container'
-								>
-									<InputControl
-										type={type}
-										index={index}
-										value={value}
-										controlData={data}
-										setValue={newValue => popup.setControlValue (index, newValue)}
-									/>
-								</div>;
-							})
-						}
-						</div>
-						<div className='image-editor-popup-button-container'>
-							<span
-								className='image-editor-popup-button image-editor-popup-button-accept'
-								onClick={this.clickOK.bind (this)}
-							>
-								OK
-							</span>
-							{cancelButton}
-						</div>
-					</div>
+				<div key={`popup-${type}-${index}`} className='image-editor-control-container'>
+					<InputControl
+						type={type}
+						index={index}
+						value={value}
+						controlData={data}
+						setValue={newValue => popup.setControlValue (index, newValue)}
+					/>
 				</div>
-			</div>
-		);
+			);
 
-		return popupComponent;
+			return ctrl;
+		});
+
+		return <Window
+			title={props.title}
+			body={controlComponents}
+			popupType={props.popupType}
+			clickOK={this.clickOK.bind (this)}
+			clickCancel={this.clickCancel.bind (this)}
+		/>
 	}
 }
 
