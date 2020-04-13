@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,400,400i,600,600i,700');
+
+
 html, body
 {
 	background-color: #041A2B;
 	color:            white;
+	font-family:     'Titillium Web', sans-serif;
 }
 
 .image-editor-toolbar
