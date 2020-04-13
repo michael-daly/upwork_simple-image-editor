@@ -48,10 +48,10 @@ class InputControl extends Component
 
 		const control =
 		(
-			<Fragment>
-				<label>{label}</label>
+			<span className='image-editor-input-control'>
+				<label className='image-editor-textbox-label'>{label}</label>
 				<input type='textbox' value={value} onChange={this.setValue.bind (this)} />
-			</Fragment>
+			</span>
 		);
 
 		return control;

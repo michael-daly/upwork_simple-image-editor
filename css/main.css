@@ -19,12 +19,45 @@ html, body
 	z-index:  995;
 
 	background-color: #011627;
+
+	user-select: none;
 }
 
 .image-editor-toolbar-button
 {
-	padding: 1%;
-	cursor:  pointer;
+	background:     transparent;
+	padding-left:   1%;
+	padding-right:  1%;
+	padding-top:    0.5%;
+	padding-bottom: 0.5%;
+	cursor:         pointer;
+}
+
+.image-editor-toolbar-button:hover
+{
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.image-editor-toolbar-button:active
+{
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+.image-editor-control-container
+{
+	display:       block;
+	margin-bottom: 1.5%;
+}
+
+.image-editor-input-control
+{
+
+}
+
+.image-editor-textbox-label
+{
+	font-size: 110%;
+	margin:    1%;
 }
 
 .image-editor-popup
