@@ -21,6 +21,7 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "konva": "^4.2.2",
     "react": "^16.13.1",
     "react-color": "^2.17.3",
