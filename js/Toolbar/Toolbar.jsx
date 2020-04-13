@@ -89,25 +89,25 @@ class Toolbar extends Component
 
 			<ToolbarButton
 				type='file'
-				text='Upload Image'
+				icon='file-image'
 				onUpload={this.onImageUploaded.bind (this)}
 			/>
 
-			<ToolbarButton text='Send' onClick={this.clickSendButton.bind (this)} />
+			<ToolbarButton icon='paper-plane' onClick={this.clickSendButton.bind (this)} />
 
-			<ToolbarButton text='Edit' onClick={this.clickEditButton.bind (this)} />
-			<ToolbarButton text='Undo' onClick={props.undo.bind (this)} />
-			<ToolbarButton text='Redo' onClick={props.redo.bind (this)} />
+			<ToolbarButton icon='edit' onClick={this.clickEditButton.bind (this)} />
+			<ToolbarButton icon='undo' onClick={props.undo.bind (this)} />
+			<ToolbarButton icon='redo' onClick={props.redo.bind (this)} />
 
-			<ToolbarButton text='Clear' onClick={props.clear.bind (this)} />
+			<ToolbarButton icon='trash-alt' onClick={props.clear.bind (this)} />
 			<ToolbarButton
-				text='Delete Shape'
+				icon='eraser'
 				misc={{ disabled: props.tool === TOOL_DELETE }}
 
 				onClick={() => props.setTool (TOOL_DELETE)}
 			/>
 
-			<ToolbarButton text='Set Draw Color' onClick={props.showColorPicker.bind (this)} />
+			<ToolbarButton icon='eye-dropper' onClick={props.showColorPicker.bind (this)} />
 
 			<InputControl
 				type={GUI_SIGNED_INT}
@@ -117,7 +117,7 @@ class Toolbar extends Component
 			/>
 
 			<ToolbarButton
-				text='Rectangle'
+				icon='square'
 				misc={{ disabled: props.tool === TOOL_RECTANGLE }}
 
 				onClick={() => props.setTool (TOOL_RECTANGLE)}
@@ -132,7 +132,7 @@ class Toolbar extends Component
 			/>
 
 			<ToolbarButton
-				text='Arrow'
+				icon='long-arrow-alt-right'
 				misc={{ disabled: props.tool === TOOL_ARROW }}
 
 				onClick={() => props.setTool (TOOL_ARROW)}

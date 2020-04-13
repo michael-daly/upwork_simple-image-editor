@@ -4,6 +4,12 @@ html, body
 	color:            white;
 }
 
+.image-editor-toolbar-button
+{
+	padding: 1%;
+	cursor:  pointer;
+}
+
 .image-editor-popup
 {
 	position: absolute;

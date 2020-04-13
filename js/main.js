@@ -7,6 +7,8 @@ import App from '~/App/App.jsx';
 
 import store from '~/store.js';
 
+import '~/fontawesome.js';
+
 
 ReactDOM.render
 (

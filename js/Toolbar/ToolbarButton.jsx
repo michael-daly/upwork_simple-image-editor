@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 class ToolbarButton extends Component
 {
@@ -20,7 +22,7 @@ class ToolbarButton extends Component
 
 	render ()
 	{
-		const { type, text, onClick = () => {}, onUpload = () => {}, misc = {} } = this.props;
+		const { type, icon, onClick = () => {}, onUpload = () => {}, misc = {} } = this.props;
 
 		if ( type === 'file' )
 		{
@@ -31,7 +33,9 @@ class ToolbarButton extends Component
 			/>;
 		}
 
-		return <input {...misc} type='button' value={text} onClick={onClick} />;
+		return <span className='image-editor-toolbar-button' onClick={onClick}>
+			<FontAwesomeIcon icon={icon} />
+		</span>;
 	}
 };
 
