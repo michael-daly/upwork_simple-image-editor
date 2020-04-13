@@ -98,55 +98,64 @@ class Toolbar extends Component
 			}
 
 			<div className='image-editor-toolbar'>
-				<ToolbarButton
-					id='upload-image'
-					type='file'
-					icon='folder-open'
-					onUpload={this.onImageUploaded.bind (this)}
-				/>
-
-				<ToolbarButton icon='envelop' onClick={this.clickSendButton.bind (this)} />
-
-				<ToolbarButton icon='pencil' onClick={this.clickEditButton.bind (this)} />
-				<ToolbarButton icon='undo2' onClick={props.undo.bind (this)} />
-				<ToolbarButton icon='redo2' onClick={props.redo.bind (this)} />
-
-				<ToolbarButton icon='bin' onClick={props.clear.bind (this)} />
-
-				<ToolbarButton
-					icon='eraser'
-					iconSize='1.2%'
-
-					onClick={() => props.setTool (TOOL_DELETE)}
-				/>
-
-				<ToolbarButton icon='eyedropper' onClick={props.showColorPicker.bind (this)} />
-
-				<InputControl
-					type={GUI_SIGNED_INT}
-					value={props.drawThickness}
-					controlData={controlData}
-					setValue={props.setDrawThickness.bind (this)}
-				/>
-
-				<ToolbarButton
-					className='image-editor-toolbar-button-combo'
-					icon={props.toolType === RECT_FILL ? 'stop2' : 'checkbox-unchecked'}
-					onClick={() => props.setTool (TOOL_RECTANGLE)}
-				>
-					<ToolbarDropdown
-						className='image-editor-toolbar-dropdown-combo'
-						name='rectangleOptions'
-						list={rectangleOptions}
-
-						onSelect={event => props.setToolType (event.value)}
+				<span className='image-editor-toolbar-section'>
+					<ToolbarButton
+						id='upload-image'
+						type='file'
+						icon='folder-open'
+						onUpload={this.onImageUploaded.bind (this)}
 					/>
-				</ToolbarButton>
 
-				<ToolbarButton
-					icon='arrow-up-right'
-					onClick={() => props.setTool (TOOL_ARROW)}
-				/>
+					<ToolbarButton icon='envelop' onClick={this.clickSendButton.bind (this)} />
+					<ToolbarButton icon='pencil' onClick={this.clickEditButton.bind (this)} />
+				</span>
+
+				<span className='image-editor-toolbar-section'>
+					<ToolbarButton icon='undo2' onClick={props.undo.bind (this)} />
+					<ToolbarButton icon='redo2' onClick={props.redo.bind (this)} />
+				</span>
+
+				<span className='image-editor-toolbar-section'>
+					<ToolbarButton icon='bin' onClick={props.clear.bind (this)} />
+
+					<ToolbarButton
+						icon='eraser'
+						iconSize='1.2%'
+
+						onClick={() => props.setTool (TOOL_DELETE)}
+					/>
+				</span>
+
+				<span className='image-editor-toolbar-section'>
+					<InputControl
+						type={GUI_SIGNED_INT}
+						value={props.drawThickness}
+						controlData={controlData}
+						setValue={props.setDrawThickness.bind (this)}
+					/>
+					<ToolbarButton icon='eyedropper' onClick={props.showColorPicker.bind (this)} />
+				</span>
+
+				<span className='image-editor-toolbar-end-section'>
+					<ToolbarButton
+						className='image-editor-toolbar-button-combo'
+						icon={props.toolType === RECT_FILL ? 'stop2' : 'checkbox-unchecked'}
+						onClick={() => props.setTool (TOOL_RECTANGLE)}
+					>
+						<ToolbarDropdown
+							className='image-editor-toolbar-dropdown-combo'
+							name='rectangleOptions'
+							list={rectangleOptions}
+
+							onSelect={event => props.setToolType (event.value)}
+						/>
+					</ToolbarButton>
+
+					<ToolbarButton
+						icon='arrow-up-right'
+						onClick={() => props.setTool (TOOL_ARROW)}
+					/>
+				</span>
 			</div>
 		</div>;
 	}

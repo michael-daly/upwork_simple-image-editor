@@ -41,6 +41,15 @@ html, body
 }
 
 /**
+ * Toolbar section style
+ */
+
+.image-editor-toolbar-section
+{
+	margin-right: 2.1vw;
+}
+
+/**
  * Toolbar button styles
  */
 
