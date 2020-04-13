@@ -202,17 +202,21 @@ html, body
 	bottom:   15%;
 	width:    25vw;
 
-	background-color: #011E33;
+	background-color: #012D4B;
+
+	user-select: none;
 }
 
 .image-editor-popup-title
 {
-	background-color: #011627;
+	background-color: #01223A;
 
 	font-size: 1.1vw;
 
-	padding: 0.5vw;
-	margin:  0vw;
+	padding:       0.5vw;
+	padding-left:  1vw;
+	padding-right: 1vw;
+	margin:        0vw;
 }
 
 .image-editor-popup-controls
@@ -264,5 +268,5 @@ html, body
 
 .image-editor-popup-button-accept:active
 {
-	background: #005472;
+	background: #00557A;
 }
