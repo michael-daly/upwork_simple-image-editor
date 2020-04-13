@@ -19,31 +19,19 @@ const style =
 
 class ToolbarColorPicker extends Component
 {
-	constructor ( props )
-	{
-		super (props);
-
-		this.state = { currentColor: '#000', color: '#000', x: '32px', y: '64px' };
-	}
-
-	onChangeColor ({ hex })
-	{
-		this.setState ({ color: hex });
-	}
-
-	onAccept ()
-	{
-		this.props.onClickOK (this.state.color);
-	}
-
-	onCancel ()
-	{
-		this.props.onClickCancel ();
-	}
-
 	componentDidMount ()
 	{
 		this.setState ({ currentColor: this.props.color, color: this.props.color });
+	}
+
+	clickOK ( event )
+	{
+		this.props.onClickOK ();
+	}
+
+	clickCancel ( event )
+	{
+		this.props.onClickCancel ();
 	}
 
 	render ()
@@ -58,6 +46,10 @@ class ToolbarColorPicker extends Component
 						title='Color Picker'
 						body=''
 						windowType={WINDOW_OK_CANCEL}
+						windowSize='medium'
+
+						onClickOK={this.clickOK.bind (this)}
+						onClickCancel={this.clickCancel.bind (this)}
 					/>
 				</div>
 			</div>

@@ -172,7 +172,7 @@ html, body
  * Window styles
  */
 
-.image-editor-window
+.image-editor-window-small, .image-editor-window-medium, .image-editor-window-large
 {
 	position: relative;
 	bottom:   15%;
@@ -181,6 +181,16 @@ html, body
 	background-color: #012D4B;
 
 	user-select: none;
+}
+
+.image-editor-window-medium
+{
+	width: 35vw;
+}
+
+.image-editor-window-large
+{
+	width: 45vw;
 }
 
 .image-editor-window-title

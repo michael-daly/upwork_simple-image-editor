@@ -5,7 +5,15 @@ import { WINDOW_OK, WINDOW_OK_CANCEL } from '~/Popup/constants.js';
 
 const Window = props =>
 {
-	const { windowType = WINDOW_OK, clickOK = () => {}, clickCancel = () => {} } = props;
+	const
+	{
+		windowType = WINDOW_OK,
+		windowSize = 'small',
+
+		onClickOK     = () => {},
+		onClickCancel = () => {}
+	}
+	= props;
 
 	let cancelButton = '';
 
@@ -13,7 +21,7 @@ const Window = props =>
 	{
 		cancelButton =
 		(
-			<span className='image-editor-window-button' onClick={clickCancel}>
+			<span className='image-editor-window-button' onClick={onClickCancel}>
 				Cancel
 			</span>
 		);
@@ -21,7 +29,7 @@ const Window = props =>
 
 	const win =
 	(
-		<div className='image-editor-window'>
+		<div className={`image-editor-window-${windowSize}`}>
 			<h3 className='image-editor-window-title'>
 				{props.title}
 			</h3>
@@ -29,7 +37,7 @@ const Window = props =>
 				{props.body}
 			</div>
 			<div className='image-editor-window-button-container'>
-				<span className='image-editor-window-button-accept' onClick={clickOK}>
+				<span className='image-editor-window-button-accept' onClick={onClickOK}>
 					OK
 				</span>
 				{cancelButton}

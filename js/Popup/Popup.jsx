@@ -105,8 +105,8 @@ class Popup extends Component
 						title={props.title}
 						body={controlComponents}
 						windowType={props.windowType}
-						clickOK={this.clickOK.bind (this)}
-						clickCancel={this.clickCancel.bind (this)}
+						onClickOK={this.clickOK.bind (this)}
+						onClickCancel={this.clickCancel.bind (this)}
 					/>
 				</div>
 			</div>
