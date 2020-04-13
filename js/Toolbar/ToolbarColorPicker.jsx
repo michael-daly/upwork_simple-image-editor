@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
 
-import { PhotoshopPicker } from 'react-color';
+import { CustomPicker    } from 'react-color';
+import { Hue, Saturation } from 'react-color/lib/components/common';
 
+import Window from '~/Popup/Window.jsx';
+
+import { WINDOW_OK_CANCEL } from '~/Popup/constants.js';
+
+
+
+const style =
+{
+	picker:
+	{
+		background: '#DCDCDC',
+	}
+};
 
 class ToolbarColorPicker extends Component
 {
@@ -9,7 +23,7 @@ class ToolbarColorPicker extends Component
 	{
 		super (props);
 
-		this.state = { color: '#000', x: '32px', y: '64px' };
+		this.state = { currentColor: '#000', color: '#000', x: '32px', y: '64px' };
 	}
 
 	onChangeColor ({ hex })
@@ -29,23 +43,29 @@ class ToolbarColorPicker extends Component
 
 	componentDidMount ()
 	{
-		this.setState ({ color: this.props.color });
+		this.setState ({ currentColor: this.props.color, color: this.props.color });
 	}
 
 	render ()
 	{
 		const { props, state } = this;
 
-		return <div className='image-editor-color-picker' style={{ left: state.x, top: state.y }}>
-			<PhotoshopPicker
-				color={this.state.color}
-				onChangeComplete={this.onChangeColor.bind (this)}
-				onAccept={this.onAccept.bind (this)}
-				onCancel={this.onCancel.bind (this)}
-			/>
-		</div>;
+		const popupComponent =
+		(
+			<div className='image-editor-popup'>
+				<div className='image-editor-popup-overlay'>
+					<Window
+						title='Color Picker'
+						body=''
+						windowType={WINDOW_OK_CANCEL}
+					/>
+				</div>
+			</div>
+		);
+
+		return popupComponent;
 	}
 };
 
 
-export default ToolbarColorPicker;
+export default CustomPicker (ToolbarColorPicker);
