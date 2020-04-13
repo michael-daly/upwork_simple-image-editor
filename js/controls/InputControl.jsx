@@ -50,7 +50,12 @@ class InputControl extends Component
 		(
 			<span className='image-editor-input-control'>
 				<label className='image-editor-textbox-label'>{label}</label>
-				<input type='textbox' value={value} onChange={this.setValue.bind (this)} />
+				<input
+					className='image-editor-textbox-input'
+					type='textbox'
+					value={value}
+					onChange={this.setValue.bind (this)}
+				/>
 			</span>
 		);
 
