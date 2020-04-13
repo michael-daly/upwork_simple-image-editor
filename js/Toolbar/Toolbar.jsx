@@ -79,7 +79,7 @@ class Toolbar extends Component
 	{
 		const { props } = this;
 
-		return <div className='image-editor-toolbar'>
+		return <div>
 			{
 				props.renderColorPicker ?
 					<ToolbarColorPicker
@@ -89,57 +89,60 @@ class Toolbar extends Component
 					/> : ''
 			}
 
-			<ToolbarButton
-				type='file'
-				icon='email'
-				onUpload={this.onImageUploaded.bind (this)}
-			/>
+			<div className='image-editor-toolbar'>
+				<ToolbarButton
+					type='file'
+					icon='email'
+					onUpload={this.onImageUploaded.bind (this)}
+				/>
 
-			<ToolbarButton icon='envelop' onClick={this.clickSendButton.bind (this)} />
+				<ToolbarButton icon='envelop' onClick={this.clickSendButton.bind (this)} />
 
-			<ToolbarButton icon='pencil' onClick={this.clickEditButton.bind (this)} />
-			<ToolbarButton icon='undo2' onClick={props.undo.bind (this)} />
-			<ToolbarButton icon='redo2' onClick={props.redo.bind (this)} />
+				<ToolbarButton icon='pencil' onClick={this.clickEditButton.bind (this)} />
+				<ToolbarButton icon='undo2' onClick={props.undo.bind (this)} />
+				<ToolbarButton icon='redo2' onClick={props.redo.bind (this)} />
 
-			<ToolbarButton icon='bin' onClick={props.clear.bind (this)} />
+				<ToolbarButton icon='bin' onClick={props.clear.bind (this)} />
 
-			<ToolbarButton
-				icon='eraser'
-				misc={{ disabled: props.tool === TOOL_DELETE }}
+				<ToolbarButton
+					icon='eraser'
+					iconSize='1.25%'
+					misc={{ disabled: props.tool === TOOL_DELETE }}
 
-				onClick={() => props.setTool (TOOL_DELETE)}
-			/>
+					onClick={() => props.setTool (TOOL_DELETE)}
+				/>
 
-			<ToolbarButton icon='eyedropper' onClick={props.showColorPicker.bind (this)} />
+				<ToolbarButton icon='eyedropper' onClick={props.showColorPicker.bind (this)} />
 
-			<InputControl
-				type={GUI_SIGNED_INT}
-				value={props.drawThickness}
-				controlData={{ label: 'Draw Thickness:' }}
-				setValue={props.setDrawThickness.bind (this)}
-			/>
+				<InputControl
+					type={GUI_SIGNED_INT}
+					value={props.drawThickness}
+					controlData={{ label: 'Draw Thickness:' }}
+					setValue={props.setDrawThickness.bind (this)}
+				/>
 
-			<ToolbarButton
-				icon={props.toolType === RECT_FILL ? 'stop2' : 'checkbox-unchecked'}
-				misc={{ disabled: props.tool === TOOL_RECTANGLE }}
+				<ToolbarButton
+					icon={props.toolType === RECT_FILL ? 'stop2' : 'checkbox-unchecked'}
+					misc={{ disabled: props.tool === TOOL_RECTANGLE }}
 
-				onClick={() => props.setTool (TOOL_RECTANGLE)}
-			/>
-			<ToolbarDropdown
-				name='rectangleOptions'
-				list={rectangleOptions}
+					onClick={() => props.setTool (TOOL_RECTANGLE)}
+				/>
+				<ToolbarDropdown
+					name='rectangleOptions'
+					list={rectangleOptions}
 
-				misc={{ disabled: props.tool !== TOOL_RECTANGLE }}
+					misc={{ disabled: props.tool !== TOOL_RECTANGLE }}
 
-				onSelect={event => props.setToolType (event.target.value)}
-			/>
+					onSelect={event => props.setToolType (event.target.value)}
+				/>
 
-			<ToolbarButton
-				icon='arrow-up-right'
-				misc={{ disabled: props.tool === TOOL_ARROW }}
+				<ToolbarButton
+					icon='arrow-up-right'
+					misc={{ disabled: props.tool === TOOL_ARROW }}
 
-				onClick={() => props.setTool (TOOL_ARROW)}
-			/>
+					onClick={() => props.setTool (TOOL_ARROW)}
+				/>
+			</div>
 		</div>;
 	}
 }

@@ -9,7 +9,7 @@ class ToolbarColorPicker extends Component
 	{
 		super (props);
 
-		this.state = { color: '#000' };
+		this.state = { color: '#000', x: '32px', y: '64px' };
 	}
 
 	onChangeColor ({ hex })
@@ -34,9 +34,9 @@ class ToolbarColorPicker extends Component
 
 	render ()
 	{
-		const { props } = this;
+		const { props, state } = this;
 
-		return <div className='image-editor-color-picker'>
+		return <div className='image-editor-color-picker' style={{ left: state.x, top: state.y }}>
 			<PhotoshopPicker
 				color={this.state.color}
 				onChangeComplete={this.onChangeColor.bind (this)}

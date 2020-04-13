@@ -22,7 +22,17 @@ class ToolbarButton extends Component
 
 	render ()
 	{
-		const { type, icon, onClick = () => {}, onUpload = () => {}, misc = {} } = this.props;
+		const
+		{
+			type,
+			icon,
+
+			iconSize = '1%',
+			misc     = {},
+			onClick  = () => {},
+			onUpload = () => {},
+		}
+		= this.props;
 
 		if ( type === 'file' )
 		{
@@ -34,7 +44,7 @@ class ToolbarButton extends Component
 		}
 
 		return <span className='image-editor-toolbar-button' onClick={onClick}>
-			<ToolbarIcon icon={icon} size='1%' />
+			<ToolbarIcon icon={icon} size={iconSize} />
 		</span>;
 	}
 };
