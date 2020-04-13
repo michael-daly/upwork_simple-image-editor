@@ -4,6 +4,11 @@ html, body
 	color:            white;
 }
 
+.image-editor-toolbar
+{
+	padding: 0.5%;
+}
+
 .image-editor-toolbar-button
 {
 	padding: 1%;

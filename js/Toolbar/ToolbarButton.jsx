@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ToolbarIcon from '~/Toolbar/ToolbarIcon.jsx';
 
 
 class ToolbarButton extends Component
@@ -34,7 +34,7 @@ class ToolbarButton extends Component
 		}
 
 		return <span className='image-editor-toolbar-button' onClick={onClick}>
-			<FontAwesomeIcon icon={icon} />
+			<ToolbarIcon icon={icon} size='1%' />
 		</span>;
 	}
 };

@@ -77,7 +77,7 @@ class Toolbar extends Component
 	{
 		const { props } = this;
 
-		return <div>
+		return <div className='image-editor-toolbar'>
 			{
 				props.renderColorPicker ?
 					<ToolbarColorPicker
@@ -89,17 +89,18 @@ class Toolbar extends Component
 
 			<ToolbarButton
 				type='file'
-				icon='file-image'
+				icon='email'
 				onUpload={this.onImageUploaded.bind (this)}
 			/>
 
-			<ToolbarButton icon='paper-plane' onClick={this.clickSendButton.bind (this)} />
+			<ToolbarButton icon='envelop' onClick={this.clickSendButton.bind (this)} />
 
-			<ToolbarButton icon='edit' onClick={this.clickEditButton.bind (this)} />
-			<ToolbarButton icon='undo' onClick={props.undo.bind (this)} />
-			<ToolbarButton icon='redo' onClick={props.redo.bind (this)} />
+			<ToolbarButton icon='pencil' onClick={this.clickEditButton.bind (this)} />
+			<ToolbarButton icon='undo2' onClick={props.undo.bind (this)} />
+			<ToolbarButton icon='redo2' onClick={props.redo.bind (this)} />
 
-			<ToolbarButton icon='trash-alt' onClick={props.clear.bind (this)} />
+			<ToolbarButton icon='bin' onClick={props.clear.bind (this)} />
+
 			<ToolbarButton
 				icon='eraser'
 				misc={{ disabled: props.tool === TOOL_DELETE }}
@@ -107,7 +108,7 @@ class Toolbar extends Component
 				onClick={() => props.setTool (TOOL_DELETE)}
 			/>
 
-			<ToolbarButton icon='eye-dropper' onClick={props.showColorPicker.bind (this)} />
+			<ToolbarButton icon='eyedropper' onClick={props.showColorPicker.bind (this)} />
 
 			<InputControl
 				type={GUI_SIGNED_INT}
@@ -117,7 +118,7 @@ class Toolbar extends Component
 			/>
 
 			<ToolbarButton
-				icon='square'
+				icon='checkbox-unchecked'
 				misc={{ disabled: props.tool === TOOL_RECTANGLE }}
 
 				onClick={() => props.setTool (TOOL_RECTANGLE)}
@@ -132,7 +133,7 @@ class Toolbar extends Component
 			/>
 
 			<ToolbarButton
-				icon='long-arrow-alt-right'
+				icon='arrow-up-right'
 				misc={{ disabled: props.tool === TOOL_ARROW }}
 
 				onClick={() => props.setTool (TOOL_ARROW)}
