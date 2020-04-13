@@ -75,7 +75,6 @@ class InputControl extends Component
 					value={value}
 					maxLength={maxLength}
 					onChange={this.setValue.bind (this)}
-
 				/>
 			</span>
 		);

@@ -91,6 +91,7 @@ class Toolbar extends Component
 				props.renderColorPicker ?
 					<ToolbarColorPicker
 						color={props.drawColor}
+						currentColor={props.drawColor}
 						onClickOK={this.setDrawColor.bind (this)}
 						onClickCancel={props.hideColorPicker.bind (this)}
 					/> : ''

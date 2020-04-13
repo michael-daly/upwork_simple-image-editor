@@ -315,5 +315,18 @@ html, body
 {
 	position: relative;
 	display:  flex;
-	margin:   0.5vw;
+
+	margin:        1vw;
+	margin-top:    2vw;
+	margin-bottom: 3vw;
+}
+
+.image-editor-color-controls-hex
+{
+	position: relative;
+	display:  flex;
+
+	margin:        1vw;
+	margin-right:  4vw;
+	margin-bottom: 3vw;
 }
