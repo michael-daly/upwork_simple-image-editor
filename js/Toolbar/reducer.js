@@ -1,4 +1,13 @@
-const { TOOL_RECTANGLE, RECT_FILL, MIN_DRAW_THICKNESS } = require ('~/Toolbar/constants.js');
+const { clamp } = require ('~/util/clamp.js');
+
+const
+{
+	TOOL_RECTANGLE,
+	RECT_FILL,
+	MIN_DRAW_THICKNESS,
+	MAX_DRAW_THICKNESS
+}
+= require ('~/Toolbar/constants.js');
 
 
 const defaultState =
@@ -26,9 +35,9 @@ module.exports = ( state = defaultState, action ) =>
 		{
 			let drawThickness = payload;
 
-			if ( drawThickness !== ''  &&  drawThickness < MIN_DRAW_THICKNESS )
+			if ( drawThickness !== '' )
 			{
-				drawThickness = MIN_DRAW_THICKNESS;
+				drawThickness = clamp (drawThickness, MIN_DRAW_THICKNESS, MAX_DRAW_THICKNESS);
 			}
 
 			return { ...state, drawThickness };

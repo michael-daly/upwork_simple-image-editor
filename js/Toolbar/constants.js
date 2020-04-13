@@ -6,6 +6,7 @@ const RECT_FILL    = 'RECT_FILL';
 const RECT_OUTLINE = 'RECT_OUTLINE';
 
 const MIN_DRAW_THICKNESS = 1;
+const MAX_DRAW_THICKNESS = 1000;
 
 
 module.exports =
@@ -18,4 +19,5 @@ module.exports =
 	RECT_OUTLINE,
 
 	MIN_DRAW_THICKNESS,
+	MAX_DRAW_THICKNESS,
 };
