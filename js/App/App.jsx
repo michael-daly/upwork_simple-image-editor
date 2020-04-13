@@ -96,6 +96,8 @@ class App extends Component
 				<Stage
 					ref='drawingArea'
 
+					className='image-editor-drawing-area'
+
 					width={props.canvasWidth}
 					height={props.canvasHeight}
 
