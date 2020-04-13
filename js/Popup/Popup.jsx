@@ -120,7 +120,7 @@ class Popup extends Component
 						</div>
 						<div className='image-editor-popup-button-container'>
 							<span
-								className='image-editor-popup-button'
+								className='image-editor-popup-button image-editor-popup-button-accept'
 								onClick={this.clickOK.bind (this)}
 							>
 								OK
