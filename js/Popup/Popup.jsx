@@ -80,11 +80,12 @@ class Popup extends Component
 
 		if ( props.popupType === POPUP_OK_CANCEL )
 		{
-			cancelButton = <input
-				type='button'
-				value='Cancel'
-				onClick={this.clickCancel.bind (this)}
-			/>;
+			cancelButton =
+			(
+				<span className='image-editor-popup-button' onClick={this.clickCancel.bind (this)}>
+					Cancel
+				</span>
+			);
 		}
 
 		const popup = this;
@@ -117,8 +118,13 @@ class Popup extends Component
 							})
 						}
 						</div>
-						<div>
-							<input type='button' value='OK' onClick={this.clickOK.bind (this)} />
+						<div className='image-editor-popup-button-container'>
+							<span
+								className='image-editor-popup-button'
+								onClick={this.clickOK.bind (this)}
+							>
+								OK
+							</span>
 							{cancelButton}
 						</div>
 					</div>

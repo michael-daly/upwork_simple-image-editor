@@ -8,6 +8,10 @@ html, body
 	font-family:     'Titillium Web', sans-serif;
 }
 
+/**
+ * Main toolbar style
+ */
+
 .image-editor-toolbar
 {
 	left:     0px;
@@ -22,6 +26,10 @@ html, body
 
 	user-select: none;
 }
+
+/**
+ * Toolbar button styles
+ */
 
 .image-editor-toolbar-button
 {
@@ -52,6 +60,10 @@ html, body
 {
 	background-color: rgba(0, 0, 0, 0.2);
 }
+
+/**
+ * Toolbar dropdown styles
+ */
 
 .image-editor-toolbar-dropdown
 {
@@ -89,6 +101,16 @@ html, body
 	font-size: 150%;
 }
 
+.image-editor-color-picker
+{
+	position: absolute;
+	z-index:  990;
+}
+
+/**
+ * Input control styles
+ */
+
 .image-editor-control-container
 {
 	display:       block;
@@ -117,6 +139,10 @@ html, body
 	margin-right: 1vw;
 }
 
+/**
+ * Popup menu styles
+ */
+
 .image-editor-popup
 {
 	position: fixed;
@@ -144,10 +170,8 @@ html, body
 .image-editor-popup-window
 {
 	position: relative;
-
-	height: 30%;
-	width:  30%;
-	bottom: 15%;
+	bottom:   15%;
+	width:    25vw;
 
 	background-color: #011E33;
 }
@@ -167,8 +191,37 @@ html, body
 	padding: 1vw;
 }
 
-.image-editor-color-picker
+.image-editor-popup-button-container
 {
-	position: absolute;
-	z-index:  990;
+	display: flex;
+
+	font-size: 1.1vw;
+
+	padding: 0.5vw;
+	margin:  0vw;
+
+	width: 100%;
+}
+
+.image-editor-popup-button
+{
+	background: #00729F;
+	cursor:     pointer;
+
+	padding:       0.3vw;
+	padding-left:  1.5vw;
+	padding-right: 1.5vw;
+
+	margin-left:  0.3vw;
+	margin-right: 0.3vw;
+}
+
+.image-editor-popup-button:hover
+{
+	background: #0A88B2;
+}
+
+.image-editor-popup-button:active
+{
+	background: #005472;
 }

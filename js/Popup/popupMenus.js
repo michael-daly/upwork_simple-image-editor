@@ -26,7 +26,7 @@ const editImageMenu = deepfreeze (
 		{
 			type:         GUI_TEXTBOX,
 			label:        'Image Description:',
-			width:        '18vw',
+			width:        '13vw',
 			value:        '',
 			maxLength:    300,
 			stateField:   'imageDescription',
