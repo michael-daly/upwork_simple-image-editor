@@ -15,8 +15,7 @@ import { serializeShapeData } from '~/misc/serializeShapeData.js';
 
 import { setImageURL, clearShapes, undo, redo } from '~/MainCanvas/actions.js';
 
-import { POPUP_OK_CANCEL } from '~/Popup/constants.js';
-import { GUI_SIGNED_INT  } from '~/controls/constants.js';
+import { GUI_SIGNED_INT } from '~/controls/constants.js';
 
 import
 {

@@ -97,13 +97,22 @@ class Popup extends Component
 			return ctrl;
 		});
 
-		return <Window
-			title={props.title}
-			body={controlComponents}
-			popupType={props.popupType}
-			clickOK={this.clickOK.bind (this)}
-			clickCancel={this.clickCancel.bind (this)}
-		/>
+		const popupComponent =
+		(
+			<div className='image-editor-popup'>
+				<div className='image-editor-popup-overlay'>
+					<Window
+						title={props.title}
+						body={controlComponents}
+						windowType={props.windowType}
+						clickOK={this.clickOK.bind (this)}
+						clickCancel={this.clickCancel.bind (this)}
+					/>
+				</div>
+			</div>
+		);
+
+		return popupComponent;
 	}
 }
 

@@ -1,14 +1,14 @@
 const { has      } = require ('~/util/has.js');
 const { deepcopy } = require ('~/util/deepcopy.js');
 
-const { POPUP_OK } = require ('~/Popup/constants.js');
+const { WINDOW_OK } = require ('~/Popup/constants.js');
 
 
 const defaultState =
 {
 	showPopup:   false,
 	title:       'Popup',
-	popupType:   POPUP_OK,
+	windowType:  WINDOW_OK,
 	popupAction: '',
 	controls:    [],
 };

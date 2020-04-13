@@ -169,6 +169,85 @@ html, body
 }
 
 /**
+ * Window styles
+ */
+
+.image-editor-window
+{
+	position: relative;
+	bottom:   15%;
+	width:    25vw;
+
+	background-color: #012D4B;
+
+	user-select: none;
+}
+
+.image-editor-window-title
+{
+	background-color: #01223A;
+
+	font-size: 1.1vw;
+
+	padding:       0.5vw;
+	padding-left:  1vw;
+	padding-right: 1vw;
+	margin:        0vw;
+}
+
+.image-editor-window-controls
+{
+	padding: 1vw;
+}
+
+.image-editor-window-button-container
+{
+	display: flex;
+
+	font-size: 1.1vw;
+
+	padding:        0.8vw;
+	padding-bottom: 1vw;
+	margin:         0vw;
+
+	width: 100%;
+}
+
+.image-editor-window-button, .image-editor-window-button-accept
+{
+	background: transparent;
+	cursor:     pointer;
+
+	padding:       0.3vw;
+	padding-left:  1.5vw;
+	padding-right: 1.5vw;
+
+	margin-left:  0.3vw;
+	margin-right: 0.3vw;
+}
+
+.image-editor-window-button:hover
+{
+	text-decoration: underline;
+}
+
+.image-editor-window-button-accept
+{
+	background: #00729F;
+}
+
+.image-editor-window-button-accept:hover
+{
+	background:      #0A88B2;
+	text-decoration: none;
+}
+
+.image-editor-window-button-accept:active
+{
+	background: #00557A;
+}
+
+/**
  * Popup menu styles
  */
 
@@ -194,79 +273,4 @@ html, body
     justify-content: center;
 
 	background-color: rgba(0, 0, 0, 0.3);
-}
-
-.image-editor-popup-window
-{
-	position: relative;
-	bottom:   15%;
-	width:    25vw;
-
-	background-color: #012D4B;
-
-	user-select: none;
-}
-
-.image-editor-popup-title
-{
-	background-color: #01223A;
-
-	font-size: 1.1vw;
-
-	padding:       0.5vw;
-	padding-left:  1vw;
-	padding-right: 1vw;
-	margin:        0vw;
-}
-
-.image-editor-popup-controls
-{
-	padding: 1vw;
-}
-
-.image-editor-popup-button-container
-{
-	display: flex;
-
-	font-size: 1.1vw;
-
-	padding:        0.8vw;
-	padding-bottom: 1vw;
-	margin:         0vw;
-
-	width: 100%;
-}
-
-.image-editor-popup-button, .image-editor-popup-button-accept
-{
-	background: transparent;
-	cursor:     pointer;
-
-	padding:       0.3vw;
-	padding-left:  1.5vw;
-	padding-right: 1.5vw;
-
-	margin-left:  0.3vw;
-	margin-right: 0.3vw;
-}
-
-.image-editor-popup-button:hover
-{
-	text-decoration: underline;
-}
-
-.image-editor-popup-button-accept
-{
-	background: #00729F;
-}
-
-.image-editor-popup-button-accept:hover
-{
-	background:      #0A88B2;
-	text-decoration: none;
-}
-
-.image-editor-popup-button-accept:active
-{
-	background: #00557A;
 }

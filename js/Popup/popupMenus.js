@@ -1,6 +1,6 @@
 import { deepfreeze } from '~/util/deepfreeze.js';
 
-import { POPUP_OK_CANCEL } from '~/Popup/constants.js';
+import { WINDOW_OK_CANCEL } from '~/Popup/constants.js';
 
 import { GUI_TEXTBOX, GUI_NUMBER, GUI_INTEGER } from '~/controls/constants.js';
 
@@ -8,7 +8,7 @@ import { GUI_TEXTBOX, GUI_NUMBER, GUI_INTEGER } from '~/controls/constants.js';
 const editImageMenu = deepfreeze (
 {
 	title:         'Edit Image Data',
-	popupType:     POPUP_OK_CANCEL,
+	windowType:    WINDOW_OK_CANCEL,
 	popupAction:   'SET_IMAGE_DATA',
 
 	controls:

@@ -1,7 +1,5 @@
 const { has } = require ('~/util/has.js');
 
-const { POPUP_OK } = require ('~/Popup/constants.js');
-
 
 const defaultState =
 {
