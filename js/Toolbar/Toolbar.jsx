@@ -106,8 +106,8 @@ class Toolbar extends Component
 						onUpload={this.onImageUploaded.bind (this)}
 					/>
 
-					<ToolbarButton icon='envelop' onClick={this.clickSendButton.bind (this)} />
 					<ToolbarButton icon='pencil' onClick={this.clickEditButton.bind (this)} />
+					<ToolbarButton icon='envelop' onClick={this.clickSendButton.bind (this)} />
 				</span>
 
 				<span className='image-editor-toolbar-section'>
