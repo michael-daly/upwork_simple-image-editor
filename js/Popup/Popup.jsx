@@ -94,8 +94,8 @@ class Popup extends Component
 			<div className='image-editor-popup'>
 				<div className='image-editor-popup-overlay'>
 					<div className='image-editor-popup-window'>
-						<h3>{props.title}</h3>
-						<div>
+						<h3 className='image-editor-popup-title'>{props.title}</h3>
+						<div className='image-editor-popup-controls'>
 						{
 							controls.map (( data, index ) =>
 							{
