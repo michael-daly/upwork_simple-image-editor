@@ -17,10 +17,12 @@ const middleware =
 	require ('~/TempCanvas/middleware.js'),
 ];
 
-const createStoreWithMiddleware = applyMiddleware (...middleware) (createStore);
+/*const createStoreWithMiddleware = applyMiddleware (...middleware) (createStore);
 
 const devTools = process.env.NODE_ENV === 'production' ? null : window.__REDUX_DEVTOOLS_EXTENSION__;
-const store    = createStoreWithMiddleware (reducers, devTools  &&  devTools ());
+const store    = createStoreWithMiddleware (reducers, devTools  &&  devTools ());*/
+
+const store = createStore (reducers, undefined, applyMiddleware (...middleware));
 
 store.subscribe (() =>
 {

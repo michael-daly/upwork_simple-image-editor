@@ -1,9 +1,6 @@
 const path    = require ('path');
 const webpack = require ('webpack');
 
-const MinifyPlugin      = require ('babel-minify-webpack-plugin');
-const CompressionPlugin = require ('compression-webpack-plugin');
-
 const isProduction = process.env.NODE_ENV === 'production';
 
 
@@ -14,12 +11,10 @@ module.exports =
 	output:
 	{
 		filename: 'bundle.js',
-		path: path.join (__dirname + '/dist')
+		path: path.join (__dirname + '/client/dist')
 	},
 
 	mode: isProduction ? 'production' : 'development',
-
-	plugins: isProduction ? [new MinifyPlugin (), new CompressionPlugin ()] : [],
 
 	module:
 	{
