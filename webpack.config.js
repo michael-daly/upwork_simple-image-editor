@@ -1,8 +1,6 @@
 const path    = require ('path');
 const webpack = require ('webpack');
 
-const isProduction = process.env.NODE_ENV === 'production';
-
 
 module.exports =
 {
@@ -13,8 +11,6 @@ module.exports =
 		filename: 'bundle.js',
 		path: path.join (__dirname + '/client/dist')
 	},
-
-	mode: isProduction ? 'production' : 'development',
 
 	module:
 	{

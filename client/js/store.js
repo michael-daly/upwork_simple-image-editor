@@ -24,10 +24,4 @@ const store    = createStoreWithMiddleware (reducers, devTools  &&  devTools ())
 
 const store = createStore (reducers, undefined, applyMiddleware (...middleware));
 
-store.subscribe (() =>
-{
-	console.log ('State changed:', store.getState ());
-});
-
-
 export default store;
